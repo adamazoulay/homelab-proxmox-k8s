@@ -16,7 +16,7 @@ argocd-apps:
       generators:
         - git:
             repoURL: &repoURL https://github.com/adamazoulay/homelab-proxmox-k8s
-            revision: &revision master
+            revision: &revision main
             directories:
               - path: system/*
               - path: platform/*

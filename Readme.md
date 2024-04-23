@@ -28,5 +28,5 @@ Update the repo url and domain url in `values-seed.yaml` and `values.yaml`.
 
 Replace the domain name with yours: galactica.host -> my.domain.
 
-1. Fill in the s3 credentials in `./system/csi-s3/secret.yaml`, and apply them: `kubectl apply -f ./system/csi-s3/secret.yaml`
+1. Fill in the s3 credentials in `./system/csi-s3/secret.yaml`, and apply them `kubectl apply -f ./system/csi-s3/secret.yaml`
 2. 
