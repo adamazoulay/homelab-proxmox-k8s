@@ -36,17 +36,23 @@ Manually set up for now, we can automate this later.
 Update the repo url and domain url in `values-seed.yaml` and `values.yaml`. Change the gitea values to point at the
 correct github urls.
 
-1. 
+1. Create the s3 secret for storage, and set the current storage class to non-default:
+   ```shell
+   kubectl apply -f ./system/csi-s3/secret.yaml
+   kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
+   ```
+2. Spin up argocd:
    ```shell
    kubectl create namespace argocd
+   kubectl ns argocd
    helm dependency build ./system/argocd
    helm template ./system/argocd --values ./system/argocd/values-seed.yaml --include-crds | kubectl apply -f - -n argocd
    ```
-2. Get the password for argocd (un: admin):
+3. Get the password for argocd (un: admin):
    ```shell
    kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
    ```
-3. View [dashboard](http://localhost:8080):
+4. View [dashboard](http://localhost:8080):
    ```shell
    kubectl port-forward service/release-name-argocd-server 8080:80 -n argocd
    ```
@@ -55,8 +61,8 @@ correct github urls.
 
 Replace the domain name with yours: galactica.host -> my.domain.
 
-1. Fill in the s3 credentials in `./system/csi-s3/secret.yaml`, and apply them:
-   ```shell
-   kubectl apply -f ./system/csi-s3/secret.yaml
-   ```
-2. 
+```shell
+helm install csi-s3 -n kube-system ./system/csi-s3/ -f ./system/csi-s3/values.yaml
+kubectl apply -f test/pvc.yaml
+kubectl delete -f test/pvc.yaml
+```
