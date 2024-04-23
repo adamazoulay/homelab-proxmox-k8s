@@ -6,6 +6,8 @@
 
 Driver: `https://us.download.nvidia.com/XFree86/Linux-x86_64/550.76/NVIDIA-Linux-x86_64-550.76.run`
 
+NOTE: I disabled secureboot in the uefi settings on first boot, maybe this fixed it?
+
 ```shell
 wget https://us.download.nvidia.com/XFree86/Linux-x86_64/550.76/NVIDIA-Linux-x86_64-550.76.run
 chmod +x NVIDIA-Linux-x86_64-550.76.run

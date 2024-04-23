@@ -1,7 +1,7 @@
 argo-cd:
   server:
     metrics: &metrics
-      enabled: false
+      enabled: false  # Change this to enable metrics
       serviceMonitor:
         enabled: false
   controller:
