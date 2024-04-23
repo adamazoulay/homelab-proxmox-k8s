@@ -1,0 +1,38 @@
+elementweb:
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      external-dns.alpha.kubernetes.io/target: "homelab-tunnel.galactica.host"
+      external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    hosts:
+      - host: &frontend_host chat.galactica.host
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: element-tls-certificate
+        hosts:
+          - *frontend_host
+  config:
+    default:
+      base_url: https://matrix.galactica.host
+      server_name: galactica.host
+
+dendrite:
+  dendrite_config:
+    global:
+      server_name: matrix.galactica.host
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hostName: matrix.galactica.host
+    tls:
+      - hosts:
+          - matrix.galactica.host
+        secretName: matrix-tls-certificate
+  postgresql:
+    enabled: true
