@@ -55,12 +55,8 @@ correct github urls.
 
 Replace the domain name with yours: galactica.host -> my.domain.
 
-1. Create the csi-s3 namespace:
+1. Fill in the s3 credentials in `./system/csi-s3/secret.yaml`, and apply them:
    ```shell
-   kubectl create namespace csi-s3
+   kubectl apply -f ./system/csi-s3/secret.yaml
    ```
-2. Fill in the s3 credentials in `./system/csi-s3/secret.yaml`, and apply them:
-   ```shell
-   kubectl apply -f ./system/csi-s3/secret.yaml -n csi-s3
-   ```
-3. 
+2. 

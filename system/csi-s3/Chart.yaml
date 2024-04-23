@@ -4,4 +4,4 @@ version: 0.0.0
 dependencies:
   - name: csi-s3
     version: 1.5.1
-    repository: https://awslabs.github.io/mountpoint-s3-csi-driver/aws-mountpoint-s3-csi-driver
+    repository: https://awslabs.github.io/mountpoint-s3-csi-driver
