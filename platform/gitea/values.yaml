@@ -1,4 +1,15 @@
 gitea:
+  replicaCount: 1
+
+  postgresql-ha:
+    enabled: false
+
+  postgresql:
+    enabled: true
+
+  redis-cluster:
+    enabled: false
+
   ingress:
     enabled: true
     className: nginx
