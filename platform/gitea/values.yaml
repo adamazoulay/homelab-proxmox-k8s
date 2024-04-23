@@ -1,6 +1,10 @@
 gitea:
   replicaCount: 1
 
+  persistence:
+    claimName: gitea-shared-storage
+    size: 25Gi
+
   postgresql-ha:
     enabled: false
 
