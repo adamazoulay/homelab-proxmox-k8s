@@ -35,8 +35,7 @@ argocd-apps:
       namespace: argocd
       generators:
         - git:
-#            repoURL: &repoURL http://gitea-http.gitea:3000/ops/homelab
-            repoURL: &repoURL https://github.com/adamazoulay/homelab-proxmox-k8s
+            repoURL: &repoURL http://gitea-http.gitea:3000/ops/homelab
             revision: &revision main
             directories:
               - path: system/*
