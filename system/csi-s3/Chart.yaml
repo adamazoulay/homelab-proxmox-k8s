@@ -3,5 +3,5 @@ name: csi-s3
 version: 0.0.0
 dependencies:
   - name: csi-s3
-    version: 0.7.5
-    repository: https://apecloud.github.io/helm-charts
+    version: 1.5.1
+    repository: https://awslabs.github.io/mountpoint-s3-csi-driver
