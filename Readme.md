@@ -16,7 +16,8 @@ Manually set up for now, we can automate this later.
 
 ### ArgoCD
 
-Update the repo url and domain url in `values-seed.yaml` and `values.yaml`.
+Update the repo url and domain url in `values-seed.yaml` and `values.yaml`. Change the gitea values to point at the
+correct github urls.
 
 1. `kubectl create namespace argocd`
 2. `helm dependency build ./system/argocd`
