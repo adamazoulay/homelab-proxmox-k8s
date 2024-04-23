@@ -10,3 +10,8 @@ Manually set up for now, we can automate this later.
 
 ### ArgoCD
 
+1. `kubectl create namespace argocd`
+2. `helm dependency build ./system/argocd`
+3. `helm template ./system/argocd --values ./system/argocd/values-seed.yaml --include-crds | kubectl apply -f -`
+4. Get the password for argocd (un: admin): `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+4. View [dashboard](http://localhost:8080): `kubectl port-forward service/release-name-argocd-server 8080:80`
