@@ -24,6 +24,9 @@ rules:
   - apiGroups: ["storage.k8s.io"]
     resources: ["volumeattachments"]
     verbs: ["get", "list", "watch", "update", "patch"]
+  - apiGroups: [ "storage.k8s.io" ]
+    resources: [ "volumeattachments/status" ]
+    verbs: [ "patch" ]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -69,7 +72,7 @@ spec:
       labels:
         app: csi-attacher-s3
     spec:
-      serviceAccount: csi-attacher-sa
+      serviceAccountName: csi-attacher-sa
       tolerations:
       - key: node-role.kubernetes.io/master
         operator: "Exists"
