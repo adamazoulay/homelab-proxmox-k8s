@@ -23,6 +23,7 @@ gitea:
           password: gitea
           database: gitea
           username: gitea
+          role: gitea
         service:
           ports:
             postgresql: 5432
