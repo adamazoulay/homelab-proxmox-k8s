@@ -1,34 +1,28 @@
 Manually set up for now, we can automate this later.
 
-
 ### Remote access
 
-1. (ON HOST) Install k3s:
+1. Edit the metal/inventories/prod.yaml with the machine details.
+2. Install ansible:
    ```shell
-   curl -sfL https://get.k3s.io | sh -
+   pipx install ansible --include-deps
    ```
-2. (ON HOST) [Add to kubeconfig](https://devops.stackexchange.com/questions/16043/error-error-loading-config-file-etc-rancher-k3s-k3s-yaml-open-etc-rancher)
-   1. ```shell
-      mkdir ~/.kube 2> /dev/null 
-      sudo k3s kubectl config view --raw > "$KUBECONFIG"
-      chmod 600 "$KUBECONFIG"
-3. (ON REMOTE) Add config to remote machine:
+3. (ON REMOTE) Install prerequisites:
    ```shell
-   scp adam@192.168.0.21:~/.kube/config ~/.kube/proxmox-homelab
+   make -C ./metal
    ```
-4. (ON REMOTE) Edit the config to fill in the IP and name: 
+4. (ON REMOTE) Add to .bashrc (or .zshrc):
    ```shell
-   sed -i -e 's/127.0.0.1/192.168.0.21/g' ~/.kube/proxmox-homelab
-   sed -i -e 's/default/homelab/g' ~/.kube/proxmox-homelab
+   export KUBECONFIG=~/.kube/config:~/.kube/homelab
    ```
-5. (ON REMOTE) Add to .bashrc (or .zshrc):
-   ```shell
-   export KUBECONFIG=~/.kube/config:~/.kube/proxmox-homelab
-   ```
-6. (ON REMOTE) Change the context and test:
+5. (ON REMOTE) Change the context and test:
    ```shell
    kubectl ctx homelab
    kubectl get all
+   ```
+5. (ON REMOTE) Ex:
+   ```shell
+   make -C ./external
    ```
 
 ### ArgoCD
@@ -36,12 +30,9 @@ Manually set up for now, we can automate this later.
 Update the repo url and domain url in `values-seed.yaml` and `values.yaml`. Change the gitea values to point at the
 correct github urls.
 
-https://openebs.io/docs/quickstart-guide/installation
-
 1. Create the s3 secret for storage, and set the current storage class to non-default:
    ```shell
    kubectl apply -f ./system/csi-s3/secret.yaml
-   kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"false"}}}'
    ```
 2. Spin up argocd:
    ```shell
@@ -65,13 +56,9 @@ Replace the domain name with yours: galactica.host -> my.domain.
 
 1. Set up external secrets:
    ```shell
-   KUBE_CONFIG_PATH=~/.kube/proxmox-homelab make plan -C ./external
+   KUBE_CONFIG_PATH=~/.kube/proxmox-homelab make -C ./external
    ```
 
 ```shell
-helm install csi-s3 -n kube-system ./system/csi-s3/ -f ./system/csi-s3/values.yaml
-kubectl apply -f test/pvc.yaml
-kubectl delete -f test/pvc.yaml
-
-kubectl logs csi-attacher-s3-0 -n kube-system
+kubectl port-forward service/speedtest 3000:3000 -n speedtest
 ```

@@ -1,5 +1,7 @@
 .POSIX:
 
+env ?= prod
+
 default: apply
 
 ~/.terraform.d/credentials.tfrc.json:
@@ -14,7 +16,9 @@ terraform.tfvars:
 	touch ${@}
 
 namespaces:
-	ansible-playbook namespaces.yml
+	ansible-playbook \
+		--inventory ../metal/inventories/${env}.yml \
+		namespaces.yml
 
 plan: .terraform.lock.hcl
 	terraform plan

@@ -1,4 +1,7 @@
-default: proxmox system
+default: metal system
 
-proxmox:
-	make -C proxmox
+metal:
+	make -C metal
+
+external:
+	make -C external

@@ -1,0 +1,38 @@
+- name: install pre-requisites
+  pip:
+    name:
+      - openshift
+      - pyyaml
+      - kubernetes
+
+- name: Install Cilium
+  kubernetes.core.helm:
+    kubeconfig: '~/.kube/homelab'
+    name: cilium
+    chart_ref: cilium
+    chart_repo_url: "{{ cilium_repo_url }}"
+    chart_version: "{{ cilium_version }}"
+    release_namespace: "{{ cilium_namespace }}"
+    values: "{{ cilium_values }}"
+
+- name: Wait for Cilium CRDs
+  kubernetes.core.k8s_info:
+    kubeconfig: '~/.kube/homelab'
+    namespace: "{{ cilium_namespace }}"
+    kind: CustomResourceDefinition
+    name: "{{ item }}"
+  loop:
+    - ciliuml2announcementpolicies.cilium.io
+    - ciliumloadbalancerippools.cilium.io
+  register: crd
+  until: crd.resources | length > 0
+  retries: 5
+  delay: 10
+
+- name: Apply Cilium resources
+  kubernetes.core.k8s:
+    kubeconfig: '~/.kube/homelab'
+    template: "{{ item }}"
+  loop:
+    - ciliuml2announcementpolicy.yaml
+    - ciliumloadbalancerippool.yaml

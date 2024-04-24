@@ -1,0 +1,12 @@
+all:
+  vars:
+    control_plane_endpoint: 192.168.0.21
+    load_balancer_ip_pool:
+      - 192.168.0.224/27
+metal:
+  children:
+    masters:
+      hosts:
+        proxmox0: {ansible_host: 192.168.0.21, mac: 'BC:24:11:D2:D9:BA', disk: sda, network_interface: enp6s18}
+    workers:
+      hosts: {}

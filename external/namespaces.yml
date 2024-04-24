@@ -1,5 +1,12 @@
 - hosts: localhost
   tasks:
+    - name: install pre-requisites
+      pip:
+        name:
+          - openshift
+          - pyyaml
+          - kubernetes
+
     - name: Ensure required namespaces exist
       kubernetes.core.k8s:
         api_version: v1

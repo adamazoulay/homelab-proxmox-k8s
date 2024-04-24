@@ -1,3 +1,8 @@
+provider "kubernetes" {
+  config_path    = "~/.kube/homelab"
+  config_context = "homelab"
+}
+
 resource "kubernetes_secret" "ntfy_auth" {
   metadata {
     name      = "webhook-transformer"

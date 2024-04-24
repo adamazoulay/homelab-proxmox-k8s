@@ -1,3 +1,9 @@
+provider "kubernetes" {
+  config_path    = "~/.kube/homelab"
+  config_context = "homelab"
+}
+
+
 resource "kubernetes_secret" "external" {
   metadata {
     name      = var.name
