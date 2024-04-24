@@ -11,18 +11,18 @@ Manually set up for now, we can automate this later.
    ```shell
    make -C ./metal
    ```
-4. (ON REMOTE) Add to .bashrc (or .zshrc):
+4. (ON REMOTE) Ex:
+   ```shell
+   make -C ./external
+   ```
+5. (ON REMOTE) Add to .bashrc (or .zshrc):
    ```shell
    export KUBECONFIG=~/.kube/config:~/.kube/homelab
    ```
-5. (ON REMOTE) Change the context and test:
+6. (ON REMOTE) Change the context and test:
    ```shell
    kubectl ctx homelab
    kubectl get all
-   ```
-5. (ON REMOTE) Ex:
-   ```shell
-   make -C ./external
    ```
 
 ### ArgoCD
