@@ -11,14 +11,14 @@ variable "cloudflare_account_id" {
   type = string
 }
 
-#variable "ntfy" {
-#  type = object({
-#    url   = string
-#    topic = string
-#  })
-#
-#  sensitive = true
-#}
+variable "ntfy" {
+  type = object({
+    url   = string
+    topic = string
+  })
+
+  sensitive = true
+}
 
 variable "extra_secrets" {
   type        = map(string)

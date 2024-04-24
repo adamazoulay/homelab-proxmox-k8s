@@ -5,10 +5,10 @@ module "cloudflare" {
   cloudflare_api_key    = var.cloudflare_api_key
 }
 
-#module "ntfy" {
-#  source = "./modules/ntfy"
-#  auth   = var.ntfy
-#}
+module "ntfy" {
+  source = "./modules/ntfy"
+  auth   = var.ntfy
+}
 
 module "extra_secrets" {
   source = "./modules/extra-secrets"
