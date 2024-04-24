@@ -8,6 +8,13 @@ gitea:
   postgresql-ha:
     enabled: false
 
+  redis-cluster:
+    enabled: true
+    usePassword: false
+    cluster:
+      nodes: 1 # default: 6
+      replicas: 0 # default: 1
+
   postgresql:
     enabled: true
     global:
