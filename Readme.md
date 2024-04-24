@@ -36,6 +36,8 @@ Manually set up for now, we can automate this later.
 Update the repo url and domain url in `values-seed.yaml` and `values.yaml`. Change the gitea values to point at the
 correct github urls.
 
+https://openebs.io/docs/quickstart-guide/installation
+
 1. Create the s3 secret for storage, and set the current storage class to non-default:
    ```shell
    kubectl apply -f ./system/csi-s3/secret.yaml
