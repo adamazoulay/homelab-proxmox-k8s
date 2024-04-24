@@ -63,6 +63,11 @@ https://openebs.io/docs/quickstart-guide/installation
 
 Replace the domain name with yours: galactica.host -> my.domain.
 
+1. Set up external secrets:
+   ```shell
+   KUBE_CONFIG_PATH=~/.kube/proxmox-homelab make plan -C ./external
+   ```
+
 ```shell
 helm install csi-s3 -n kube-system ./system/csi-s3/ -f ./system/csi-s3/values.yaml
 kubectl apply -f test/pvc.yaml

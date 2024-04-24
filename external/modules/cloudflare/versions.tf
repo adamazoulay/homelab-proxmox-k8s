@@ -1,15 +1,4 @@
 terraform {
-  required_version = "~> 1.7"
-
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "galactica-homelab"
-
-    workspaces {
-      name = "homelab-external"
-    }
-  }
-
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
@@ -31,9 +20,4 @@ terraform {
 provider "cloudflare" {
   email   = var.cloudflare_email
   api_key = var.cloudflare_api_key
-}
-
-provider "kubernetes" {
-  # Use KUBE_CONFIG_PATH environment variables
-  # Or in cluster service account
 }
