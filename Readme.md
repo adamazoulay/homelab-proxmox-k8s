@@ -60,5 +60,10 @@ Replace the domain name with yours: galactica.host -> my.domain.
    ```
 
 ```shell
+kubectl port-forward service/grafana 8081:80 -n grafana
 kubectl port-forward service/speedtest 3000:3000 -n speedtest
+```
+
+```shell
+kubectl get secret dex.grafana -n global-secrets -o jsonpath="{.data.client_secret}" | base64 -d
 ```
