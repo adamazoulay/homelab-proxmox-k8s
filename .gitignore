@@ -14,3 +14,4 @@ book/
 Chart.lock
 /system/csi-s3/secret.yaml
 /system/csi-s3/charts/
+/platform/gitea/charts/

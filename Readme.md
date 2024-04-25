@@ -70,3 +70,10 @@ kubectl port-forward service/kanidm 8080:443 -n kanidm
 ```shell
 kubectl get secret dex.grafana -n global-secrets -o jsonpath="{.data.client_secret}" | base64 -d
 ```
+
+```shell
+helm dependency build ./extra-apps/gitea
+helm template ./extra-apps/gitea > tmp.yaml
+k create namespace gitea
+k apply -f tmp.yaml -n gitea
+```
