@@ -21,6 +21,7 @@ from kubernetes.stream import stream
 # https://git.khuedoan.com/user/settings/applications
 # Doing this properly inside the cluster requires:
 # - Kubernetes service account
+KUBE_CONFIG_DEFAULT_LOCATION = '~/.kube/homelab'
 config.load_config()
 
 gitea_host = client.NetworkingV1Api().read_namespaced_ingress('gitea', 'gitea').spec.rules[0].host

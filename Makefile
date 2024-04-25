@@ -5,3 +5,6 @@ metal:
 
 external:
 	make -C external
+
+test:
+	make -C test

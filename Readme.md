@@ -58,12 +58,13 @@ Replace the domain name with yours: galactica.host -> my.domain.
 
 1. Set up external secrets:
    ```shell
-   KUBE_CONFIG_PATH=~/.kube/proxmox-homelab make -C ./external
+   KUBE_CONFIG_PATH=~/.kube/homelab make -C ./external
    ```
 
 ```shell
 kubectl port-forward service/grafana 8081:80 -n grafana
 kubectl port-forward service/speedtest 3000:3000 -n speedtest
+kubectl port-forward service/kanidm 8080:443 -n kanidm
 ```
 
 ```shell
