@@ -5,6 +5,31 @@ gitea:
     claimName: gitea-shared-storage
     size: 25Gi
 
+  postgresql-ha:
+    enabled: false
+
+#  redis-cluster:
+#    enabled: true
+#    usePassword: false
+#    cluster:
+#      nodes: 1 # default: 6
+#      replicas: 0 # default: 1
+
+  postgresql:
+    enabled: true
+    global:
+      postgresql:
+        auth:
+          password: gitea
+          database: gitea
+          username: gitea
+        service:
+          ports:
+            postgresql: 5432
+    primary:
+      persistence:
+        size: 10Gi
+
 #  redis-cluster:
 #    enabled: false
 
