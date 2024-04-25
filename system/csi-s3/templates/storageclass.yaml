@@ -6,7 +6,7 @@ metadata:
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: ch.ctrox.csi.s3-driver
-reclaimPolicy: Retain
+reclaimPolicy: {{ .Values.reclaimPolicy }}
 parameters:
   bucket: galactica-homelab
   # specify which mounter to use

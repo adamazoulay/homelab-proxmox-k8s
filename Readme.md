@@ -9,6 +9,12 @@ Configure: `./scripts/configure`
    ```shell
    pipx install ansible --include-deps
    ```
+2. Change root pass, enable ssh, and copy ssh keys over:
+   ```shell
+   sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+   sudo systemctl restart ssh
+   sudo passwd
+   ```
 3. (ON REMOTE) Install prerequisites:
    ```shell
    make -C ./metal
@@ -51,6 +57,12 @@ correct github urls.
    ```shell
    kubectl port-forward service/release-name-argocd-server 8080:443 -n argocd
    ```
+4. Clean:
+   ```shell
+   chmod +x ./scripts/hacks
+   ./scripts/hacks
+   ```
+   
 
 ### All apps
 
@@ -71,9 +83,21 @@ kubectl port-forward service/kanidm 8080:443 -n kanidm
 kubectl get secret dex.grafana -n global-secrets -o jsonpath="{.data.client_secret}" | base64 -d
 ```
 
+csi-s3
 ```shell
-helm dependency build ./extra-apps/gitea
-helm template ./extra-apps/gitea > tmp.yaml
+helm template ./system/csi-s3 > tmp.yaml
+k apply -f tmp.yaml
+```
+
+```shell
+helm dependency build ./platform/gitea
+helm template ./platform/gitea > tmp.yaml -n gitea
 k create namespace gitea
 k apply -f tmp.yaml -n gitea
+
+kubectl -n gitea get secret | grep gitea-postgresql | awk '{print $1}'
+kubectl -n gitea describe secret gitea-postgresql
+
+kubectl patch pv csi-s3 -p '{"spec":{"ReclaimPolicy":"Retain"}}'
+kubectl get pv | tail -n+2 | awk '$5 == "Released" {print $1}' | xargs -I{} kubectl delete pv {}
 ```
