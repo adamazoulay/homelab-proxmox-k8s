@@ -1,5 +1,7 @@
 Manually set up for now, we can automate this later.
 
+Configure: `./scripts/configure`
+
 ### Remote access
 
 1. Edit the metal/inventories/prod.yaml with the machine details.
