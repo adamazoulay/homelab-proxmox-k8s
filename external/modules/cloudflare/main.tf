@@ -1,3 +1,8 @@
+provider "kubernetes" {
+  config_path    = "~/.kube/homelab"
+  config_context = "homelab"
+}
+
 data "cloudflare_zone" "zone" {
   name = var.cloudflare_zone
 }

@@ -47,7 +47,7 @@ correct github urls.
    ```
 4. View [dashboard](http://localhost:8080):
    ```shell
-   kubectl port-forward service/release-name-argocd-server 8080:80 -n argocd
+   kubectl port-forward service/release-name-argocd-server 8080:443 -n argocd
    ```
 
 ### All apps
