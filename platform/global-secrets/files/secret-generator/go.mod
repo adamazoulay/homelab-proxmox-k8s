@@ -1,4 +1,4 @@
-module git.galactica.host/khuedoan/homelab/platform/secret-generator
+module github.com/adamazoulay/homelab-proxmox-k8s/platform/secret-generator
 
 go 1.19
 

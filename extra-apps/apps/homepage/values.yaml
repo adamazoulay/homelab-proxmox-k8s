@@ -133,7 +133,7 @@ app-template:
               - href: https://homelab.galactica.host
                 icon: google-docs.svg
             - Public homelab repository:
-              - href: https://github.com/khuedoan/homelab
+              - href: https://github.com/adamazoulay/homelab-proxmox-k8s 
                 icon: github.svg
           - Managed services:
             - Cloudflare:

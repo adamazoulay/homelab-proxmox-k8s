@@ -1,4 +1,4 @@
-module git.galactica.host/khuedoan/homelab/gitea/config
+module github.com/adamazoulay/homelab-proxmox-k8s/gitea/config
 
 go 1.19
 
