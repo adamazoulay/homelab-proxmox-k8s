@@ -13,15 +13,6 @@ gitea:
 
   postgresql:
     enabled: true
-    global:
-      postgresql:
-        auth:
-          password: gitea
-          database: gitea
-          username: gitea
-        service:
-          ports:
-            postgresql: 5432
     primary:
       persistence:
         size: 10Gi

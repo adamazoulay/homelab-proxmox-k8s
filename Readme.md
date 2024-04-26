@@ -9,25 +9,29 @@ Configure: `./scripts/configure`
    ```shell
    pipx install ansible --include-deps
    ```
-2. Change root pass, enable ssh, and copy ssh keys over:
+3. Change root pass, enable ssh, and copy ssh keys over:
    ```shell
    sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
    sudo systemctl restart ssh
    sudo passwd
    ```
-3. (ON REMOTE) Install prerequisites:
+4. (ON REMOTE) Install prerequisites:
    ```shell
    make -C ./metal
    ```
-4. (ON REMOTE) Ex:
+5. (ON REMOTE) Ex:
    ```shell
    make -C ./external
    ```
-5. (ON REMOTE) Add to .bashrc (or .zshrc):
+6. (ON REMOTE) Ex:
+   ```shell
+   make -C ./system
+   ```
+7. (ON REMOTE) Add to .bashrc (or .zshrc):
    ```shell
    export KUBECONFIG=~/.kube/config:~/.kube/homelab
    ```
-6. (ON REMOTE) Change the context and test:
+8. (ON REMOTE) Change the context and test:
    ```shell
    kubectl ctx homelab
    kubectl get all
@@ -55,7 +59,7 @@ correct github urls.
    ```
 4. View [dashboard](http://localhost:8080):
    ```shell
-   kubectl port-forward service/release-name-argocd-server 8080:443 -n argocd
+   kubectl port-forward service/argocd-server 8080:443 -n argocd
    ```
 4. Clean:
    ```shell
@@ -100,4 +104,6 @@ kubectl -n gitea describe secret gitea-postgresql
 
 kubectl patch pv csi-s3 -p '{"spec":{"ReclaimPolicy":"Retain"}}'
 kubectl get pv | tail -n+2 | awk '$5 == "Released" {print $1}' | xargs -I{} kubectl delete pv {}
+
+kubectl exec -it gitea-postgresql-0 -- bash
 ```
