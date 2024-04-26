@@ -1,4 +1,7 @@
 gitea:
+  podSecurityContext:
+    fsGroup: 100
+
   replicaCount: 1
 
   persistence:
