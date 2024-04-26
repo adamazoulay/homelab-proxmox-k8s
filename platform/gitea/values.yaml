@@ -15,6 +15,8 @@ gitea:
     enabled: false
 
   postgresql:
+    volumePermissions:
+      enabled: true
     image:
       debug: true
     limits:
