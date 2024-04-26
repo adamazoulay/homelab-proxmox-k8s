@@ -2,7 +2,8 @@ podSecurityContext:
   fsGroup: 100
 
 containerSecurityContext:
-#  allowPrivilegeEscalation: true
+  allowPrivilegeEscalation: true
+  privileged: true
   runAsUser: 1000
   runAsGroup: 100
 
@@ -24,7 +25,8 @@ gitea:
       fsGroup: 100
 
     containerSecurityContext:
-      #  allowPrivilegeEscalation: true
+      allowPrivilegeEscalation: true
+      privileged: true
       runAsUser: 1000
       runAsGroup: 100
     image:
