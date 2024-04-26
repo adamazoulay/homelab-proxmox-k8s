@@ -1,3 +1,6 @@
+image:
+  rootless: true
+
 podSecurityContext:
   fsGroup: 117
 
