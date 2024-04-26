@@ -1,10 +1,5 @@
-podSecurityContext:
-  fsGroup: 0
-
-containerSecurityContext:
-  allowPrivilegeEscalation: true
-  runAsUser: 0
-  runAsGroup: 0
+volumePermissions:
+  enabled: true
 
 gitea:
   replicaCount: 1
