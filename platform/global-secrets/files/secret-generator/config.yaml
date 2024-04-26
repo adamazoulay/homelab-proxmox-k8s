@@ -5,6 +5,16 @@
       length: 32
       special: true
 
+# Gitea
+- name: kanidm.dex
+  data:
+    - key: client_id
+      length: 32
+      special: false
+    - key: client_secret
+      length: 32
+      special: false
+
 # Dex
 - name: dex.grafana
   data:

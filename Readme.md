@@ -52,7 +52,7 @@ Configure: `./scripts/configure`
    kubectl get secret gitea.admin -n global-secrets -o jsonpath="{.data.password}" | base64 -d
    ```
 
-4. Clean:
+3. Clean:
    ```shell
    chmod +x ./scripts/hacks
    ./scripts/hacks
@@ -61,11 +61,6 @@ Configure: `./scripts/configure`
 ### All apps
 
 Replace the domain name with yours: galactica.host -> my.domain.
-
-1. Set up external secrets:
-   ```shell
-   KUBE_CONFIG_PATH=~/.kube/homelab make -C ./external
-   ```
 
 ```shell
 kubectl port-forward service/grafana 8081:80 -n grafana
@@ -109,10 +104,12 @@ helm dependency build ./system/csi-smb
 helm template ./system/csi-smb > tmp.yaml -n csi-smb
 k create namespace csi-smb
 k apply -f tmp.yaml -n csi-smb
+k delete -f tmp.yaml -n csi-smb
 
 k apply -f pvc.yaml
 
 ```
+
 ```shell
 helm dependency build ./system/csi-nfs
 helm template ./system/csi-nfs > tmp.yaml -n csi-nfs
@@ -121,4 +118,9 @@ k apply -f tmp.yaml -n csi-nfs
 k delete -f tmp.yaml -n csi-nfs
 
 k apply -f pvc-nfs.yaml
+```
+
+```shell
+kubectl port-forward service/hubble-ui 8080:80 -n kube-system 
+kubectl port-forward service/hubble-peer 8080:443 -n kube-system 
 ```
