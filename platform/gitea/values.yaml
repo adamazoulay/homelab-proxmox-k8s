@@ -13,8 +13,6 @@ gitea:
 
   postgresql:
     enabled: true
-    persistence:
-      existingClaim: gitea-pg-pvc
 
   ingress:
     enabled: true
