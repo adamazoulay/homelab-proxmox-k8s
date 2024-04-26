@@ -50,6 +50,8 @@ gitea:
       #   USERNAME: userid
       service.explore:
         DISABLE_USERS_PAGE: true
+      service:
+        DISABLE_REGISTRATION: true
       actions:
         ENABLED: false
       webhook:
