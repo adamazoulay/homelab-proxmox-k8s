@@ -1,11 +1,14 @@
-podSecurityContext:
-  fsGroup: 100
+volumePermissions:
+  enabled: true
 
-containerSecurityContext:
-  allowPrivilegeEscalation: true
-  privileged: true
-  runAsUser: 1000
-  runAsGroup: 100
+#podSecurityContext:
+#  fsGroup: 100
+#
+#containerSecurityContext:
+#  allowPrivilegeEscalation: true
+#  privileged: true
+#  runAsUser: 1000
+#  runAsGroup: 100
 
 gitea:
   replicaCount: 1
@@ -21,14 +24,17 @@ gitea:
     enabled: false
 
   postgresql:
-    podSecurityContext:
-      fsGroup: 100
+    volumePermissions:
+      enabled: true
 
-    containerSecurityContext:
-      allowPrivilegeEscalation: true
-      privileged: true
-      runAsUser: 1000
-      runAsGroup: 100
+#    podSecurityContext:
+#      fsGroup: 100
+#
+#    containerSecurityContext:
+#      allowPrivilegeEscalation: true
+#      privileged: true
+#      runAsUser: 1000
+#      runAsGroup: 100
     image:
       debug: true
     enabled: true
