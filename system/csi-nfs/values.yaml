@@ -1,3 +1,4 @@
+# TODO: figure out why it defaults to user nobody and stops deleting
 server: 192.168.0.11
 share: homelab-k8s
 reclaimPolicy: "Delete"
