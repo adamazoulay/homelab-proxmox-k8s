@@ -108,7 +108,9 @@ kubectl get pv | tail -n+2 | awk '$5 == "Released" {print $1}' | xargs -I{} kube
 kubectl exec -it gitea-postgresql-0 -- bash
 
 k create ns testdb
-helm install my-release oci://registry-1.docker.io/bitnamicharts/postgresql -n testdb
+helm install my-release oci://registry-1.docker.io/bitnamicharts/postgresql -n testdb \
+  --set image.debug=true
+  --set volumePermissions.enabled=true
 ```
 
 ```shell
