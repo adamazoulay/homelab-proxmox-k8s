@@ -1,14 +1,8 @@
 gitea:
-  image:
-    rootless: false
-
-  podSecurityContext:
-    fsGroup: 100
-
   replicaCount: 1
 
   persistence:
-    claimName: gitea-shared-storage
+    storageClass: smb
     size: 25Gi
 
   postgresql-ha:
