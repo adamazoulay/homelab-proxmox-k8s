@@ -15,6 +15,8 @@ gitea:
     enabled: false
 
   postgresql:
+    image:
+      debug: true
     limits:
       hugepages-2Mi: "512Mi"
     enabled: true
