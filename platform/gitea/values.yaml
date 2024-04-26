@@ -12,27 +12,6 @@ gitea:
     enabled: false
 
   postgresql:
-    volumePermissions:
-      enabled: false
-      image:
-        registry: docker.io
-        repository: bitnami/os-shell
-        tag: 12-debian-12-r19
-        digest: ""
-        pullPolicy: IfNotPresent
-        pullSecrets: [ ]
-      resourcesPreset: "nano"
-      resources: { }
-      containerSecurityContext:
-        seLinuxOptions: { }
-        runAsUser: 1000
-        runAsGroup: 100
-        runAsNonRoot: false
-        seccompProfile:
-          type: RuntimeDefault
-
-    image:
-      debug: true
     enabled: true
     persistence:
       size: 10Gi

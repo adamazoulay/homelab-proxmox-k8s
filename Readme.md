@@ -110,7 +110,12 @@ kubectl exec -it gitea-postgresql-0 -- bash
 k create ns testdb
 helm install my-release oci://registry-1.docker.io/bitnamicharts/postgresql -n testdb \
   --set image.debug=true
+k delete ns testdb
+
+k create ns testdb
+helm install my-release oci://registry-1.docker.io/bitnamicharts/mysql -n testdb \
   --set volumePermissions.enabled=true
+k delete ns testdb
 ```
 
 ```shell
