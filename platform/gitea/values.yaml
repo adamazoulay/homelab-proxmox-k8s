@@ -14,7 +14,7 @@ gitea:
   postgresql:
     enabled: true
     persistence:
-      size: 10Gi
+      existingClaim: gitea-pg-pvc
 
   ingress:
     enabled: true
