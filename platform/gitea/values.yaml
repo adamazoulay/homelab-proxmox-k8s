@@ -20,6 +20,13 @@ gitea:
     enabled: false
 
   postgresql:
+    podSecurityContext:
+      fsGroup: 100
+
+    containerSecurityContext:
+      #  allowPrivilegeEscalation: true
+      runAsUser: 1000
+      runAsGroup: 100
     image:
       debug: true
     enabled: true
