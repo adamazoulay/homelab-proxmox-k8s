@@ -20,6 +20,8 @@ gitea:
     enabled: false
 
   postgresql:
+    limits:
+      hugepages-2Mi: "512Mi"
     enabled: true
     primary:
       persistence:
