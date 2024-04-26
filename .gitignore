@@ -12,6 +12,8 @@ book/
 *.tgz
 *kubeconfig.yaml
 Chart.lock
-/system/csi-s3/secret.yaml
-/system/csi-s3/charts/
+/extra-apps/csi-s3/secret.yaml
+/extra-apps/csi-s3/charts/
 /platform/gitea/charts/
+/system/csi-smb/secret.yaml
+/system/csi-smb/charts/

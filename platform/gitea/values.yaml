@@ -1,5 +1,10 @@
-volumePermissions:
-  enabled: true
+podSecurityContext:
+  fsGroup: 100
+
+containerSecurityContext:
+#  allowPrivilegeEscalation: true
+  runAsUser: 1000
+  runAsGroup: 100
 
 gitea:
   replicaCount: 1
@@ -15,18 +20,9 @@ gitea:
     enabled: false
 
   postgresql:
-
     image:
       debug: true
     enabled: true
-    primary:
-      resources:
-        limits:
-          cpu: "2000m"
-          memory: 2048Mi
-        requests:
-          cpu: "1000m"
-          memory: 2048Mi
     persistence:
       size: 10Gi
 

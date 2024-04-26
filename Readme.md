@@ -44,7 +44,7 @@ correct github urls.
 
 1. Create the s3 secret for storage, and set the current storage class to non-default:
    ```shell
-   kubectl apply -f ./system/csi-s3/secret.yaml
+   kubectl apply -f ./system/csi-smb/secret.yaml
    ```
 2. Spin up argocd:
    ```shell
@@ -106,4 +106,16 @@ kubectl patch pv csi-s3 -p '{"spec":{"ReclaimPolicy":"Retain"}}'
 kubectl get pv | tail -n+2 | awk '$5 == "Released" {print $1}' | xargs -I{} kubectl delete pv {}
 
 kubectl exec -it gitea-postgresql-0 -- bash
+
+k create ns testdb
+helm install my-release oci://registry-1.docker.io/bitnamicharts/postgresql -n testdb
+```
+
+```shell
+helm dependency build ./system/csi-smb
+helm template ./system/csi-smb > tmp.yaml -n csi-smb
+k create namespace csi-smb
+k apply -f tmp.yaml -n csi-smb
+
+k apply -f pvc.yaml
 ```
