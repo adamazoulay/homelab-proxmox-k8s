@@ -1,14 +1,10 @@
-image:
-  rootless: true
-
 podSecurityContext:
-  fsGroup: 117
+  fsGroup: 0
 
 containerSecurityContext:
-  allowPrivilegeEscalation: false
-  runAsUser: 112
-  runAsGroup: 117
-  runAsNonRoot: true
+  allowPrivilegeEscalation: true
+  runAsUser: 0
+  runAsGroup: 0
 
 gitea:
   replicaCount: 1
