@@ -2,7 +2,7 @@ zot:
   ingress:
     enabled: true
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/cluster-issuer: ssl-prod
       nginx.ingress.kubernetes.io/proxy-body-size: "0"
     className: nginx
     hosts:

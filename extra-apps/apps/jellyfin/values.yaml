@@ -55,7 +55,7 @@ app-template:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: ssl-prod
       hosts:
         - host: &jellyfinHost jellyfin.galactica.host
           paths:

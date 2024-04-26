@@ -15,7 +15,7 @@ argo-cd:
       enabled: true
       ingressClassName: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: ssl-prod
       tls: true
     metrics: &metrics
       enabled: true

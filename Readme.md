@@ -23,9 +23,10 @@ Configure: `./scripts/configure`
    ```shell
    make -C ./external
    ```
-6. Create the s3 secret for storage, and set the current storage class to non-default:
+6. Create the secrets for storage and ssl:
    ```shell
    kubectl apply -f ./system/csi-smb/secret.yaml
+   kubectl apply -f ./system/cert-manager/secret.yaml
    ```
 7. (ON REMOTE) Ex:
    ```shell

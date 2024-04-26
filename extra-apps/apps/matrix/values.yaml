@@ -3,7 +3,7 @@ elementweb:
     enabled: true
     className: nginx
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/cluster-issuer: ssl-prod
       external-dns.alpha.kubernetes.io/target: "homelab-tunnel.galactica.host"
       external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     hosts:
@@ -28,7 +28,7 @@ dendrite:
     enabled: true
     className: nginx
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/cluster-issuer: ssl-prod
     hostName: matrix.galactica.host
     tls:
       - hosts:

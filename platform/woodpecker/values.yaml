@@ -18,7 +18,7 @@ woodpecker:
     ingress:
       enabled: true
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
+        cert-manager.io/cluster-issuer: ssl-prod
       ingressClassName: nginx
       hosts:
         - host: &host ci.galactica.host

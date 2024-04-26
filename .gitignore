@@ -19,3 +19,4 @@ Chart.lock
 /system/csi-smb/charts/
 /system/csi-nfs/charts/
 /tmp.yaml
+/system/cert-manager/secret.yaml
