@@ -13,8 +13,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: smb
   mountOptions:
-    - dir_mode=0700
-    - file_mode=0700
+    - dir_mode=0750
+    - file_mode=0750
     - uid=1001
     - gid=1001
     - noperm
@@ -26,7 +26,7 @@ spec:
     # volumeHandle format: {smb-server-address}#{sub-dir-name}#{share-name}
     # make sure this value is unique for every share in the cluster
     # TODO: move these to values
-    volumeHandle: //192.168.0.11/homelab-k8s#gitea-pg-pvc#gitea-pg-pvc
+    volumeHandle: //192.168.0.11/homelab-k8s/gitea-pg-pvc#gitea-pg-pvc#gitea-pg-pvc
     volumeAttributes:
       source: //192.168.0.11/homelab-k8s
     nodeStageSecretRef:

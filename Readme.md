@@ -111,4 +111,14 @@ k create namespace csi-smb
 k apply -f tmp.yaml -n csi-smb
 
 k apply -f pvc.yaml
+
+```
+```shell
+helm dependency build ./system/csi-nfs
+helm template ./system/csi-nfs > tmp.yaml -n csi-nfs
+k create namespace csi-nfs
+k apply -f tmp.yaml -n csi-nfs
+k delete -f tmp.yaml -n csi-nfs
+
+k apply -f pvc-nfs.yaml
 ```

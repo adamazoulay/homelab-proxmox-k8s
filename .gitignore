@@ -15,5 +15,6 @@ Chart.lock
 /extra-apps/csi-s3/secret.yaml
 /extra-apps/csi-s3/charts/
 /platform/gitea/charts/
-/system/csi-smb/secret.yaml
-/system/csi-smb/charts/
+/extra-apps/csi-smb/secret.yaml
+/extra-apps/csi-smb/charts/
+/system/csi-nfs/charts/
