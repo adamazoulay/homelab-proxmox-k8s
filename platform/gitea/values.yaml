@@ -25,7 +25,11 @@ gitea:
 
   postgresql:
     volumePermissions:
+      # Default is true for K8s. Enabled needs to false for OpenShift restricted SCC and true for anyuid SCC
       enabled: true
+      # if using restricted SCC set runAsUser: "auto" and if running under anyuid SCC - runAsUser needs to match the line above
+      securityContext:
+        runAsUser: 1000
 
 #    podSecurityContext:
 #      fsGroup: 100
