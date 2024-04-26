@@ -1,4 +1,7 @@
 gitea:
+  image:
+    rootless: false
+
   podSecurityContext:
     fsGroup: 100
 
