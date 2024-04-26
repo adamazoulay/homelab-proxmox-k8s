@@ -23,50 +23,40 @@ Configure: `./scripts/configure`
    ```shell
    make -C ./external
    ```
-6. (ON REMOTE) Ex:
+6. Create the s3 secret for storage, and set the current storage class to non-default:
+   ```shell
+   kubectl apply -f ./system/csi-smb/secret.yaml
+   ```
+7. (ON REMOTE) Ex:
    ```shell
    make -C ./system
    ```
-7. (ON REMOTE) Add to .bashrc (or .zshrc):
+8. (ON REMOTE) Add to .bashrc (or .zshrc):
    ```shell
    export KUBECONFIG=~/.kube/config:~/.kube/homelab
    ```
-8. (ON REMOTE) Change the context and test:
+9. (ON REMOTE) Change the context and test:
    ```shell
    kubectl ctx homelab
    kubectl get all
    ```
 
-### ArgoCD
+### Post-install
 
-Update the repo url and domain url in `values-seed.yaml` and `values.yaml`. Change the gitea values to point at the
-correct github urls.
-
-1. Create the s3 secret for storage, and set the current storage class to non-default:
-   ```shell
-   kubectl apply -f ./system/csi-smb/secret.yaml
-   ```
-2. Spin up argocd:
-   ```shell
-   kubectl create namespace argocd
-   kubectl ns argocd
-   helm dependency build ./system/argocd
-   helm template ./system/argocd --values ./system/argocd/values-seed.yaml --include-crds | kubectl apply -f - -n argocd
-   ```
-3. Get the password for argocd (un: admin):
+1. Get the password for argocd (un: admin):
    ```shell
    kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
    ```
-4. View [dashboard](http://localhost:8080):
+2. Get the password for gitea (un: gitea_admin):
    ```shell
-   kubectl port-forward service/argocd-server 8080:443 -n argocd
+   kubectl get secret gitea.admin -n global-secrets -o jsonpath="{.data.password}" | base64 -d
    ```
+
 4. Clean:
    ```shell
    chmod +x ./scripts/hacks
    ./scripts/hacks
    ```
-   
 
 ### All apps
 
@@ -88,6 +78,7 @@ kubectl get secret dex.grafana -n global-secrets -o jsonpath="{.data.client_secr
 ```
 
 csi-s3
+
 ```shell
 helm template ./system/csi-s3 > tmp.yaml
 k apply -f tmp.yaml

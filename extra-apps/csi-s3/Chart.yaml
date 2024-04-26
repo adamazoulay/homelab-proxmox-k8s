@@ -1,3 +1,0 @@
-apiVersion: v2
-name: csi-s3
-version: 0.0.0
