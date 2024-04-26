@@ -15,16 +15,20 @@ gitea:
     enabled: false
 
   postgresql:
-    volumePermissions:
-      enabled: true
+
     image:
       debug: true
-    limits:
-      hugepages-2Mi: "512Mi"
     enabled: true
     primary:
-      persistence:
-        size: 10Gi
+      resources:
+        limits:
+          cpu: "2000m"
+          memory: 2048Mi
+        requests:
+          cpu: "1000m"
+          memory: 2048Mi
+    persistence:
+      size: 10Gi
 
 #  redis-cluster:
 #    enabled: false
