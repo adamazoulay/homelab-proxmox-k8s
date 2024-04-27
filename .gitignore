@@ -20,4 +20,4 @@ Chart.lock
 /system/csi-nfs/charts/
 /tmp.yaml
 /system/cert-manager/secret.yaml
-/apps/plex/charts/
+/apps/media-stack/charts/

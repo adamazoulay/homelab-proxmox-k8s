@@ -52,7 +52,7 @@ spec:
       containers:
         - image: sctx/overseerr:latest
           volumeMounts:
-            - mountPath: /config
+            - mountPath: /app/config
               name: data
               subPath: overseerr/config
           livenessProbe:
