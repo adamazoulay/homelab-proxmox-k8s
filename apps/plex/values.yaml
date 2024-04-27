@@ -95,7 +95,7 @@ app-template:
               pathType: Prefix
               service:
                 name: main
-                port: jellyseerr
+                port: overseerr
       tls:
         - secretName: plex-tls-certificate
           hosts:
@@ -111,9 +111,9 @@ app-template:
       size: 50Gi
       advancedMounts:
         main:
-          main:
+          plex:
             - path: /config
-              subPath: jellyfin/config
+              subPath: plex/config
           prowlarr:
             - path: /config
               subPath: prowlarr/config
