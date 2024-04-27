@@ -131,11 +131,7 @@ k apply -f pvc-nfs.yaml
 ```shell
 helm dependency build ./apps/plex
 helm template ./apps/plex > tmp.yaml -n plex
-k create namespace csi-nfs
-k apply -f tmp.yaml -n csi-nfs
-k delete -f tmp.yaml -n csi-nfs
-
-k apply -f pvc-nfs.yaml
+kubectl port-forward service/plex 32400:32400 -n plex
 ```
 
 ```shell
