@@ -129,6 +129,16 @@ k apply -f pvc-nfs.yaml
 ```
 
 ```shell
+helm dependency build ./apps/plex
+helm template ./apps/plex > tmp.yaml -n plex
+k create namespace csi-nfs
+k apply -f tmp.yaml -n csi-nfs
+k delete -f tmp.yaml -n csi-nfs
+
+k apply -f pvc-nfs.yaml
+```
+
+```shell
 kubectl port-forward service/hubble-ui 8080:80 -n kube-system 
 kubectl port-forward service/hubble-peer 8080:443 -n kube-system 
 ```
