@@ -60,7 +60,7 @@ app-template:
               pathType: Prefix
               service:
                 name: main
-                port: plex
+                port: http
         - host: &transmissionHost transmission.galactica.host
           paths:
             - path: /
