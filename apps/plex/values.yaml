@@ -32,7 +32,7 @@ app-template:
   service:
     main:
       ports:
-        http:
+        plex:
           port: 32400
           protocol: HTTP
         prowlarr:
@@ -60,7 +60,7 @@ app-template:
               pathType: Prefix
               service:
                 name: main
-                port: http
+                port: plex
         - host: &transmissionHost transmission.galactica.host
           paths:
             - path: /
