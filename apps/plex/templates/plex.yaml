@@ -51,6 +51,10 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: ghcr.io/linuxserver/plex:latest
+          volumeMounts:
+            - mountPath: /config
+              name: data
+              subPath: plex/config
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 0

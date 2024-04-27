@@ -51,6 +51,10 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: sctx/overseerr:latest
+          volumeMounts:
+            - mountPath: /config
+              name: data
+              subPath: overseerr/config
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 0
