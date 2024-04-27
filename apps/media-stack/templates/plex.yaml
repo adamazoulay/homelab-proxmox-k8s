@@ -55,6 +55,8 @@ spec:
             - mountPath: /config
               name: data
               subPath: plex/config
+            - mountPath: /data/media
+              name: nfs-vol
           livenessProbe:
             failureThreshold: 3
             initialDelaySeconds: 0
@@ -81,6 +83,10 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: media-stack-data
+        - name: nfs-vol
+          nfs:
+            server: 192.168.0.11
+            path: /media
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
