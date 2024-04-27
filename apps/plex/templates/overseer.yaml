@@ -13,7 +13,7 @@ spec:
   selector:
     app.kubernetes.io/component: overseer
     app.kubernetes.io/instance: {{ .Values.app.name }}
-    app.kubernetes.io/name: {{ .Values.app.name }}
+    app.kubernetes.io/name: {{ .Values.app.name }}-overseer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -22,7 +22,7 @@ metadata:
   labels:
     app.kubernetes.io/component: overseer
     app.kubernetes.io/instance: {{ .Values.app.name }}
-    app.kubernetes.io/name: {{ .Values.app.name }}
+    app.kubernetes.io/name: {{ .Values.app.name }}-overseer
 spec:
   revisionHistoryLimit: 3
   replicas: 1
@@ -32,13 +32,13 @@ spec:
     matchLabels:
       app.kubernetes.io/component: overseer
       app.kubernetes.io/name: {{ .Values.app.name }}
-      app.kubernetes.io/instance: {{ .Values.app.name }}
+      app.kubernetes.io/instance: {{ .Values.app.name }}-overseer
   template:
     metadata:
       labels:
         app.kubernetes.io/component: overseer
         app.kubernetes.io/instance: {{ .Values.app.name }}
-        app.kubernetes.io/name: {{ .Values.app.name }}
+        app.kubernetes.io/name: {{ .Values.app.name }}-overseer
     spec:
       enableServiceLinks: true
       serviceAccountName: default
@@ -81,10 +81,10 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.app.name }}
+  name: {{ .Values.app.name }}-overseer
   labels:
     app.kubernetes.io/instance: {{ .Values.app.name }}
-    app.kubernetes.io/name: {{ .Values.app.name }}
+    app.kubernetes.io/name: {{ .Values.app.name }}-overseer
   annotations:
     cert-manager.io/cluster-issuer: ssl-prod
 spec:

@@ -13,7 +13,7 @@ spec:
   selector:
     app.kubernetes.io/component: plex
     app.kubernetes.io/instance: {{ .Values.app.name }}
-    app.kubernetes.io/name: {{ .Values.app.name }}
+    app.kubernetes.io/name: {{ .Values.app.name }}-plex
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -22,7 +22,7 @@ metadata:
   labels:
     app.kubernetes.io/component: plex
     app.kubernetes.io/instance: {{ .Values.app.name }}
-    app.kubernetes.io/name: {{ .Values.app.name }}
+    app.kubernetes.io/name: {{ .Values.app.name }}-plex
 spec:
   revisionHistoryLimit: 3
   replicas: 1
@@ -31,14 +31,14 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/component: plex
-      app.kubernetes.io/name: {{ .Values.app.name }}
+      app.kubernetes.io/name: {{ .Values.app.name }}-plex
       app.kubernetes.io/instance: {{ .Values.app.name }}
   template:
     metadata:
       labels:
         app.kubernetes.io/component: plex
         app.kubernetes.io/instance: {{ .Values.app.name }}
-        app.kubernetes.io/name: {{ .Values.app.name }}
+        app.kubernetes.io/name: {{ .Values.app.name }}-plex
     spec:
       enableServiceLinks: true
       serviceAccountName: default
@@ -81,10 +81,10 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.app.name }}
+  name: {{ .Values.app.name }}-plex
   labels:
     app.kubernetes.io/instance: {{ .Values.app.name }}
-    app.kubernetes.io/name: {{ .Values.app.name }}
+    app.kubernetes.io/name: {{ .Values.app.name }}-plex
   annotations:
     cert-manager.io/cluster-issuer: ssl-prod
 spec:
