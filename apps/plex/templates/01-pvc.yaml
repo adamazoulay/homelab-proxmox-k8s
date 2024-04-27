@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ .Values.app.name }}-data
+  name: media-stack-data
 spec:
   accessModes:
     - "ReadWriteOnce"
