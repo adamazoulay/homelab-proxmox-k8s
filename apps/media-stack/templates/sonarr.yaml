@@ -101,10 +101,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "sonarr-test.galactica.host"
+        - "sonarr.galactica.host"
       secretName: "sonarr-tls-certificate"
   rules:
-    - host: "sonarr-test.galactica.host"
+    - host: "sonarr.galactica.host"
       http:
         paths:
           - path: "/"

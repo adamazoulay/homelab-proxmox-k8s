@@ -95,10 +95,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "prowlarr-test.galactica.host"
+        - "prowlarr.galactica.host"
       secretName: "prowlarr-tls-certificate"
   rules:
-    - host: "prowlarr-test.galactica.host"
+    - host: "prowlarr.galactica.host"
       http:
         paths:
           - path: "/"

@@ -101,10 +101,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "sabnzbd-test.galactica.host"
+        - "sabnzbd.galactica.host"
       secretName: "sabnzbd-tls-certificate"
   rules:
-    - host: "sabnzbd-test.galactica.host"
+    - host: "sabnzbd.galactica.host"
       http:
         paths:
           - path: "/"

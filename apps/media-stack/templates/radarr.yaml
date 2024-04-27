@@ -101,10 +101,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "radarr-test.galactica.host"
+        - "radarr.galactica.host"
       secretName: "radarr-tls-certificate"
   rules:
-    - host: "radarr-test.galactica.host"
+    - host: "radarr.galactica.host"
       http:
         paths:
           - path: "/"
