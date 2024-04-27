@@ -51,6 +51,11 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: ghcr.io/linuxserver/plex:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
           volumeMounts:
             - mountPath: /config
               name: data

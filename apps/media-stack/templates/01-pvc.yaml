@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: media-stack-data
 spec:
+  volumeName: "pvc-b02cc152-b7e4-43c2-a521-c169e43eeeac"
   accessModes:
     - "ReadWriteMany"
   resources:
