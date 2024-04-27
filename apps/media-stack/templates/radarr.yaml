@@ -1,0 +1,116 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr
+spec:
+  type: ClusterIP
+  ports:
+    - port: 7878
+      targetPort: 7878
+      protocol: TCP
+      name: radarr
+  selector:
+    app.kubernetes.io/component: radarr
+    app.kubernetes.io/instance: radarr
+    app.kubernetes.io/name: radarr
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  labels:
+    app.kubernetes.io/component: radarr
+    app.kubernetes.io/instance: radarr
+    app.kubernetes.io/name: radarr
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: radarr
+      app.kubernetes.io/name: radarr
+      app.kubernetes.io/instance: radarr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: radarr
+        app.kubernetes.io/instance: radarr
+        app.kubernetes.io/name: radarr
+    spec:
+      enableServiceLinks: true
+      serviceAccountName: default
+      automountServiceAccountToken: true
+      securityContext:
+        fsGroup: 1000
+      hostIPC: false
+      hostNetwork: false
+      hostPID: false
+      dnsPolicy: ClusterFirst
+      containers:
+        - image: ghcr.io/linuxserver/radarr:latest
+          volumeMounts:
+            - mountPath: /config
+              name: data
+              subPath: radarr/config
+            - mountPath: /data
+              name: nfs-vol
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            tcpSocket:
+              port: 7878
+            timeoutSeconds: 1
+          name: radarr
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            tcpSocket:
+              port: 7878
+            timeoutSeconds: 1
+          startupProbe:
+            failureThreshold: 30
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            tcpSocket:
+              port: 7878
+            timeoutSeconds: 1
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: media-stack-data
+        - name: nfs-vol
+          nfs:
+            server: 192.168.0.11
+            path: /tank/data
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radarr
+  labels:
+    app.kubernetes.io/instance: radarr
+    app.kubernetes.io/name: radarr
+  annotations:
+    cert-manager.io/cluster-issuer: ssl-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "radarr-test.galactica.host"
+      secretName: "radarr-tls-certificate"
+  rules:
+    - host: "radarr-test.galactica.host"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: radarr
+                port:
+                  number: 7878
