@@ -101,6 +101,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.app.name }}
+                name: plex
                 port:
                   number: 32400
