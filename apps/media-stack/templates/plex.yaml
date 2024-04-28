@@ -70,7 +70,7 @@ spec:
         - name: nfs-vol
           nfs:
             server: 192.168.0.11
-            path: /media
+            path: /export/media
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
