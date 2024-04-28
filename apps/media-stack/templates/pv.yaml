@@ -4,6 +4,7 @@ kind: PersistentVolume
 metadata:
   name: pv-media-stack-data-local
 spec:
+  storageClassName: local-path
   capacity:
     storage: 100Gi
   accessModes:
@@ -13,13 +14,13 @@ spec:
     namespace: media-stack
   hostPath:
     path: /opt/k8s-pod-storage
-
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: pvc-media-stack-data-local
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
