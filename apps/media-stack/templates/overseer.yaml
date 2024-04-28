@@ -51,32 +51,11 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: sctx/overseerr:latest
+          name: overseerr
           volumeMounts:
             - mountPath: /app/config
               name: data
               subPath: overseerr/config
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 5055
-            timeoutSeconds: 1
-          name: overseer
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 5055
-            timeoutSeconds: 1
-          startupProbe:
-            failureThreshold: 30
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            tcpSocket:
-              port: 5055
-            timeoutSeconds: 1
       volumes:
         - name: data
           persistentVolumeClaim:

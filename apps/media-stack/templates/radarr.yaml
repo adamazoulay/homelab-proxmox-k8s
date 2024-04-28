@@ -51,34 +51,13 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: ghcr.io/linuxserver/radarr:latest
+          name: radarr
           volumeMounts:
             - mountPath: /config
               name: data
               subPath: radarr/config
             - mountPath: /data
               name: nfs-vol
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 7878
-            timeoutSeconds: 1
-          name: radarr
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 7878
-            timeoutSeconds: 1
-          startupProbe:
-            failureThreshold: 30
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            tcpSocket:
-              port: 7878
-            timeoutSeconds: 1
       volumes:
         - name: data
           persistentVolumeClaim:

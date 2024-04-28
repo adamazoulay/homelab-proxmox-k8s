@@ -51,34 +51,13 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: linuxserver/sonarr:latest
+          name: sonarr
           volumeMounts:
             - mountPath: /config
               name: data
               subPath: sonarr/config
             - mountPath: /data
               name: nfs-vol
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 8989
-            timeoutSeconds: 1
-          name: sonarr
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 8989
-            timeoutSeconds: 1
-          startupProbe:
-            failureThreshold: 30
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            tcpSocket:
-              port: 8989
-            timeoutSeconds: 1
       volumes:
         - name: data
           persistentVolumeClaim:

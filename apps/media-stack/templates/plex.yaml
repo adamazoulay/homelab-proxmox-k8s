@@ -51,6 +51,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: ghcr.io/linuxserver/plex:latest
+          name: plex
           env:
             - name: PUID
               value: "1000"
@@ -62,28 +63,6 @@ spec:
               subPath: plex/config
             - mountPath: /data/media
               name: nfs-vol
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 32400
-            timeoutSeconds: 1
-          name: plex
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 32400
-            timeoutSeconds: 1
-          startupProbe:
-            failureThreshold: 30
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            tcpSocket:
-              port: 32400
-            timeoutSeconds: 1
       volumes:
         - name: data
           persistentVolumeClaim:

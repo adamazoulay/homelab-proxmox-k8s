@@ -51,34 +51,13 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: linuxserver/sabnzbd:latest
+          name: sabnzbd
           volumeMounts:
             - mountPath: /config
               name: data
               subPath: sabnzbd/config
             - mountPath: /data/usenet
               name: nfs-vol
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 8080
-            timeoutSeconds: 1
-          name: sabnzbd
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 8080
-            timeoutSeconds: 1
-          startupProbe:
-            failureThreshold: 30
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            tcpSocket:
-              port: 8080
-            timeoutSeconds: 1
       volumes:
         - name: data
           persistentVolumeClaim:

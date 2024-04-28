@@ -51,32 +51,11 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - image: linuxserver/prowlarr:latest
+          name: prowlarr
           volumeMounts:
             - mountPath: /config
               name: data
               subPath: prowlarr/config
-          livenessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 9696
-            timeoutSeconds: 1
-          name: prowlarr
-          readinessProbe:
-            failureThreshold: 3
-            initialDelaySeconds: 0
-            periodSeconds: 10
-            tcpSocket:
-              port: 9696
-            timeoutSeconds: 1
-          startupProbe:
-            failureThreshold: 30
-            initialDelaySeconds: 0
-            periodSeconds: 5
-            tcpSocket:
-              port: 9696
-            timeoutSeconds: 1
       volumes:
         - name: data
           persistentVolumeClaim:
