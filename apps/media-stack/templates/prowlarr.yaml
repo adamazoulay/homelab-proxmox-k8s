@@ -64,7 +64,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: pvc-media-stack-data
+            claimName: pvc-media-stack-data-local
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
