@@ -49,14 +49,14 @@ spec:
       # hostNetwork: false
       # hostPID: false
       # dnsPolicy: ClusterFirst
-{{/*      containers:*/}}
-{{/*        - image: linuxserver/prowlarr:latest*/}}
-{{/*          name: prowlarr*/}}
-{{/*          env:*/}}
-{{/*            - name: PUID*/}}
-{{/*              value: "1000"*/}}
-{{/*            - name: PGID*/}}
-{{/*              value: "100"*/}}
+      containers:
+        - image: linuxserver/prowlarr:latest
+          name: prowlarr
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "100"
 {{/*          volumeMounts:*/}}
 {{/*            - mountPath: /config*/}}
 {{/*              name: data*/}}
