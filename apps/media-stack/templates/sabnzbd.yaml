@@ -61,7 +61,7 @@ spec:
             - mountPath: /config
               name: data
               subPath: sabnzbd/config
-            - mountPath: /data/usenet
+            - mountPath: /data
               name: tank-data
       volumes:
         - name: data
