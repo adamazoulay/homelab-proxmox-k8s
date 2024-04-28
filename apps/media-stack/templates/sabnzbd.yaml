@@ -66,7 +66,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: media-stack-data
+            claimName: pvc-media-stack-data
         - name: nfs-vol
           nfs:
             server: 192.168.0.11
