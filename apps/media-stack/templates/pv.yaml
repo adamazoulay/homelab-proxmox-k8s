@@ -1,10 +1,36 @@
-kind: PersistentVolumeClaim
+#kind: PersistentVolumeClaim
+#apiVersion: v1
+#metadata:
+#  name: media-stack-data
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  resources:
+#    requests:
+#      storage: 100Gi
+
 apiVersion: v1
+kind: PersistentVolume
 metadata:
   name: media-stack-data
 spec:
+  capacity:
+    storage: 100Gi
   accessModes:
     - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
+  mountOptions:
+    - hard
+    - timeo=600
+    - retrans=3
+    - proto=tcp
+    - nfsvers=4.2
+    - port=2050
+    - rsize=4096
+    - wsize=4096
+    - noacl
+    - nocto
+    - noatime
+    - nodiratime
+  nfs:
+    server: 192.168.0.11
+    path: /homelab-k8s/pvc-dc09baac-82f9-4d35-a7e0-f99ae999c62c
