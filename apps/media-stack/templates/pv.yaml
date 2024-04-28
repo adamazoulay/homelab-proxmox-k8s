@@ -20,6 +20,7 @@ apiVersion: v1
 metadata:
   name: pvc-media-stack-data-local
 spec:
+  storageClassName: local-path
   volumeName: pv-media-stack-data-local
   accessModes:
     - ReadWriteOnce
