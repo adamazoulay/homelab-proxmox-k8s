@@ -25,7 +25,7 @@ spec:
     - nodiratime
   nfs:
     server: 192.168.0.11
-    path: /homelab-k8s/pvc-dc09baac-82f9-4d35-a7e0-f99ae999c62c
+    path: /homelab-k8s/pvc-8823a6dd-8b14-4872-be5e-e9e50b05e116
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
