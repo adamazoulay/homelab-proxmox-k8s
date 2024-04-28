@@ -59,8 +59,12 @@ spec:
               value: "100"
           volumeMounts:
             - mountPath: /config
-              name: media-stack-data
+              name: data
               subPath: prowlarr/config
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: pvc-media-stack-data
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
