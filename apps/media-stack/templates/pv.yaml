@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: pv-media-stack-data-local
 spec:
-  storageClassName: local-path
+  storageClassName: retain-local-path
   capacity:
     storage: 100Gi
   accessModes:
@@ -20,51 +20,12 @@ apiVersion: v1
 metadata:
   name: pvc-media-stack-data-local
 spec:
-  storageClassName: local-path
+  storageClassName: retain-local-path
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 75Gi
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv-media-stack-data
-spec:
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  claimRef:
-    name: pvc-media-stack-data
-    namespace: media-stack
-  mountOptions:
-    - hard
-    - timeo=600
-    - retrans=3
-    - proto=tcp
-    - nfsvers=4.2
-    - rsize=4096
-    - wsize=4096
-    - noacl
-    - nocto
-    - noatime
-    - nodiratime
-  nfs:
-    server: 192.168.0.11
-    path: /homelab-k8s/media-stack-config-data
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: pvc-media-stack-data
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
