@@ -75,7 +75,7 @@ metadata:
     app.kubernetes.io/name: overseerr
   annotations:
     cert-manager.io/cluster-issuer: ssl-prod
-    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.example.com"
+    external-dns.alpha.kubernetes.io/target: "homelab-tunnel.galactica.host"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: nginx
