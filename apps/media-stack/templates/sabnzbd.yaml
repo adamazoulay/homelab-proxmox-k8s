@@ -80,6 +80,7 @@ metadata:
     app.kubernetes.io/name: sabnzbd
   annotations:
     cert-manager.io/cluster-issuer: ssl-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "4096m"
 spec:
   ingressClassName: nginx
   tls:
