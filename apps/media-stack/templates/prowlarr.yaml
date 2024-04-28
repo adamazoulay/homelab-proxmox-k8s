@@ -49,22 +49,22 @@ spec:
       # hostNetwork: false
       # hostPID: false
       # dnsPolicy: ClusterFirst
-      containers:
-        - image: linuxserver/prowlarr:latest
-          name: prowlarr
-          env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "100"
-          volumeMounts:
-            - mountPath: /config
-              name: data
-              subPath: prowlarr/config
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: media-stack-data
+{{/*      containers:*/}}
+{{/*        - image: linuxserver/prowlarr:latest*/}}
+{{/*          name: prowlarr*/}}
+{{/*          env:*/}}
+{{/*            - name: PUID*/}}
+{{/*              value: "1000"*/}}
+{{/*            - name: PGID*/}}
+{{/*              value: "100"*/}}
+{{/*          volumeMounts:*/}}
+{{/*            - mountPath: /config*/}}
+{{/*              name: data*/}}
+{{/*              subPath: prowlarr/config*/}}
+{{/*      volumes:*/}}
+{{/*        - name: data*/}}
+{{/*          persistentVolumeClaim:*/}}
+{{/*            claimName: media-stack-data*/}}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
