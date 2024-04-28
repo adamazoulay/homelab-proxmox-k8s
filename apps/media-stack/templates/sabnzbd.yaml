@@ -62,15 +62,14 @@ spec:
               name: data
               subPath: sabnzbd/config
             - mountPath: /data/usenet
-              name: nfs-vol
+              name: tank-data
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: pvc-media-stack-data
-        - name: nfs-vol
-          nfs:
-            server: 192.168.0.11
-            path: /tank/data/usenet
+        - name: tank-data
+          persistentVolumeClaim:
+            claimName: pvc-tank-data
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
