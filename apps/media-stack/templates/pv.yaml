@@ -16,7 +16,6 @@ spec:
     - retrans=3
     - proto=tcp
     - nfsvers=4.2
-    - port=2050
     - rsize=4096
     - wsize=4096
     - noacl
@@ -25,7 +24,7 @@ spec:
     - nodiratime
   nfs:
     server: 192.168.0.11
-    path: /homelab-k8s/pvc-8823a6dd-8b14-4872-be5e-e9e50b05e116
+    path: /homelab-k8s/media-stack-config-data
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
