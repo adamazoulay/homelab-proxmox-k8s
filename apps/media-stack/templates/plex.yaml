@@ -62,15 +62,18 @@ spec:
               name: data
               subPath: plex/config
             - mountPath: /data/media
-              name: nfs-vol
+              name: media
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: pvc-media-stack-data
-        - name: nfs-vol
-          nfs:
-            server: 192.168.0.11
-            path: /media
+        - name: media
+          persistentVolumeClaim:
+            claimName: pvc-media
+{{/*        - name: nfs-vol*/}}
+{{/*          nfs:*/}}
+{{/*            server: 192.168.0.11*/}}
+{{/*            path: /media*/}}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

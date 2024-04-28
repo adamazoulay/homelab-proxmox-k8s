@@ -1,14 +1,3 @@
-#kind: PersistentVolumeClaim
-#apiVersion: v1
-#metadata:
-#  name: media-stack-data
-#spec:
-#  accessModes:
-#    - ReadWriteMany
-#  resources:
-#    requests:
-#      storage: 100Gi
-
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -47,3 +36,81 @@ spec:
   resources:
     requests:
       storage: 100Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-tank-data
+spec:
+  capacity:
+    storage: 64Ti
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+    name: pvc-tank-data
+  mountOptions:
+    - hard
+    - timeo=600
+    - retrans=3
+    - proto=tcp
+    - nfsvers=4.2
+    - port=2050
+    - rsize=4096
+    - wsize=4096
+    - noacl
+    - nocto
+    - noatime
+    - nodiratime
+  nfs:
+    server: 192.168.0.11
+    path: /tank/data
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-tank-data
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 64Ti
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-media
+spec:
+  capacity:
+    storage: 64Ti
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+    name: pvc-media
+  mountOptions:
+    - hard
+    - timeo=600
+    - retrans=3
+    - proto=tcp
+    - nfsvers=4.2
+    - port=2050
+    - rsize=4096
+    - wsize=4096
+    - noacl
+    - nocto
+    - noatime
+    - nodiratime
+  nfs:
+    server: 192.168.0.11
+    path: /media
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-media
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 64Ti
