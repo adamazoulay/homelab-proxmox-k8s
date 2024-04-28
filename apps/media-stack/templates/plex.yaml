@@ -86,10 +86,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "plex-test.galactica.host"
+        - "plex.galactica.host"
       secretName: "plex-tls-certificate"
   rules:
-    - host: "plex-test.galactica.host"
+    - host: "plex.galactica.host"
       http:
         paths:
           - path: "/"
