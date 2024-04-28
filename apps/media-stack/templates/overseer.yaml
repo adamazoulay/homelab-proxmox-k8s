@@ -52,6 +52,11 @@ spec:
       containers:
         - image: sctx/overseerr:latest
           name: overseerr
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "100"
           volumeMounts:
             - mountPath: /app/config
               name: data

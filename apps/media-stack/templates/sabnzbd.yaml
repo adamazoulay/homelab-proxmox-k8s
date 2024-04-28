@@ -52,6 +52,11 @@ spec:
       containers:
         - image: linuxserver/sabnzbd:latest
           name: sabnzbd
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "100"
           volumeMounts:
             - mountPath: /config
               name: data

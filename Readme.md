@@ -74,6 +74,7 @@ kubectl port-forward service/argocd-server 8081:443 -n argocd
 kubectl port-forward service/grafana 8081:80 -n grafana
 kubectl port-forward service/speedtest 3000:3000 -n speedtest
 kubectl port-forward service/kanidm 8080:443 -n kanidm
+kubectl port-forward service/sabnzbd 8080:8080 -n media-stack
 ```
 
 ```shell
