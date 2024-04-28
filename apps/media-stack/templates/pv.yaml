@@ -9,6 +9,7 @@ spec:
     - ReadWriteMany
   claimRef:
     name: pvc-media-stack-data
+    namespace: media-stack
   mountOptions:
     - hard
     - timeo=600
@@ -48,6 +49,7 @@ spec:
     - ReadWriteMany
   claimRef:
     name: pvc-tank-data
+    namespace: media-stack
   mountOptions:
     - hard
     - timeo=600
@@ -87,6 +89,7 @@ spec:
     - ReadWriteMany
   claimRef:
     name: pvc-media
+    namespace: media-stack
   mountOptions:
     - hard
     - timeo=600
