@@ -79,10 +79,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "requests.galactica.host"
+        - "requests-test.galactica.host"
       secretName: "overseer-tls-certificate"
   rules:
-    - host: "requests.galactica.host"
+    - host: "requests-test.galactica.host"
       http:
         paths:
           - path: "/"
