@@ -40,15 +40,15 @@ spec:
         app.kubernetes.io/instance: prowlarr
         app.kubernetes.io/name: prowlarr
     spec:
-      enableServiceLinks: true
-      serviceAccountName: default
-      automountServiceAccountToken: true
-      securityContext:
-        fsGroup: 1000
-      hostIPC: false
-      hostNetwork: false
-      hostPID: false
-      dnsPolicy: ClusterFirst
+      # enableServiceLinks: true
+      # serviceAccountName: default
+      # automountServiceAccountToken: true
+      # securityContext:
+      #   fsGroup: 1000
+      # hostIPC: false
+      # hostNetwork: false
+      # hostPID: false
+      # dnsPolicy: ClusterFirst
       containers:
         - image: linuxserver/prowlarr:latest
           name: prowlarr
