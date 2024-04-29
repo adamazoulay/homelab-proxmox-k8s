@@ -52,6 +52,14 @@ spec:
       containers:
         - image: ghcr.io/linuxserver/plex:latest
           name: plex
+          resources:
+            requests:
+              nvidia.com/gpu: "1"
+              # TODO: Sort out request amounts
+              # cpu: 1000m
+              # memory: 7.5Gi
+            limits:
+              nvidia.com/gpu: "1"
           env:
             - name: PUID
               value: "1000"
