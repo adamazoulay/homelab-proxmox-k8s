@@ -93,7 +93,10 @@ helm install --wait --generate-name \
       --set "toolkit.env[2].name=CONTAINERD_RUNTIME_CLASS" \
       --set "toolkit.env[2].value=nvidia" \
       --set "toolkit.env[3].name=CONTAINERD_SET_AS_DEFAULT" \
-      --set "toolkit.env[3].value='true'"  \
+      --set "toolkit.env[3].value='true'"
+      
+      
+      
      --set driver.enabled=false
      
 helm uninstall gpu-operator-1714317432 -n gpu-operator
@@ -105,6 +108,7 @@ Replace the domain name with yours: galactica.host -> my.domain.
 
 ```shell
 kubectl port-forward service/argocd-server 8081:443 -n argocd
+kubectl port-forward service/plex 32400:32400 -n media-stack
 kubectl port-forward service/grafana 8081:80 -n grafana
 kubectl port-forward service/speedtest 3000:3000 -n speedtest
 kubectl port-forward service/kanidm 8080:443 -n kanidm
