@@ -56,7 +56,7 @@ spec:
     - wsize=1048576
     - noresvport
     - noacl
-    - nocto
+    # - nocto
     # - noatime
     # - nodiratime
   nfs:
@@ -100,7 +100,7 @@ spec:
     - wsize=1048576
     - noresvport
     - noacl
-    - nocto
+    # - nocto
     # - noatime
     # - nodiratime
   nfs:
