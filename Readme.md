@@ -119,6 +119,11 @@ kubectl port-forward service/grafana 8081:80 -n grafana
 kubectl port-forward service/speedtest 3000:3000 -n speedtest
 kubectl port-forward service/kanidm 8080:443 -n kanidm
 kubectl port-forward service/sabnzbd 8080:8080 -n media-stack
+
+KUBECONFIG=~/.kube/homelab kubectl sniff ingress-nginx-controller-6fc6f5764c-dmzlc -c controller -p --socket /run/k3s/containerd/containerd.sock 
+KUBECONFIG=~/.kube/homelab kubeshark tap plex
+KUBECONFIG=~/.kube/homelab kubeshark tap nginx
+KUBECONFIG=~/.kube/homelab kubeshark clean
 ```
 
 ```shell
