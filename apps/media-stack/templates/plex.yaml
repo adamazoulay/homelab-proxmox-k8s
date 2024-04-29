@@ -40,6 +40,7 @@ spec:
         app.kubernetes.io/instance: plex
         app.kubernetes.io/name: plex
     spec:
+      runtimeClassName: nvidia
       enableServiceLinks: true
       serviceAccountName: default
       automountServiceAccountToken: true
@@ -52,6 +53,8 @@ spec:
       containers:
         - image: ghcr.io/linuxserver/plex:latest
           name: plex
+          securityContext:
+            privileged: true
           resources:
             requests:
               nvidia.com/gpu: "1"
@@ -66,9 +69,11 @@ spec:
             - name: PGID
               value: "100"
             - name: NVIDIA_VISIBLE_DEVICES
-              value: "all"
+              value: all
             - name: NVIDIA_DRIVER_CAPABILITIES
-              value: "compute,video,utility"
+              value: compute,video,utility
+            - name: CUDA_DRIVER_CAPABILITIES
+              value: compute,video,utility
           volumeMounts:
             - mountPath: /config
               name: data

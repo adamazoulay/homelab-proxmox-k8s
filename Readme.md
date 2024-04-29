@@ -102,6 +102,10 @@ kubectl delete crd clusterpolicies.nvidia.com
 kubectl delete namespace gpu-operator
 ```
 
+```shell
+kubectl exec -it service/plex -- bash
+```
+
 ### Debug
 
 Replace the domain name with yours: galactica.host -> my.domain.
@@ -177,3 +181,4 @@ kubectl port-forward service/plex 32400:32400 -n plex
 kubectl port-forward service/hubble-ui 8080:80 -n kube-system 
 kubectl port-forward service/hubble-peer 8080:443 -n kube-system 
 ```
+
