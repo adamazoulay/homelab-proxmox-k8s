@@ -5,7 +5,8 @@ ingress-nginx:
       # This is the important part
       use-forwarded-headers: "true"
       # Still works without this line because it defaults to X-Forwarded-For, but I use it anyways
-      forwarded-for-header: "CF-Connecting-IP"
+      forwarded-for-header: "Cf-Connecting-Ip"
+      enable-real-ip: "true"
 #      add-headers:
 #        use-forwarded-headers: "true"
 #        forwarded-for-header: "X-Forwarded-For"
