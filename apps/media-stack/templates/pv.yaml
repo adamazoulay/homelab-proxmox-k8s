@@ -51,8 +51,8 @@ spec:
     - noresvport
     - noacl
     - nocto
-    - noatime
-    - nodiratime
+    # - noatime
+    # - nodiratime
   nfs:
     server: 192.168.0.11
     path: /export/tank/data
@@ -91,8 +91,8 @@ spec:
     - noresvport
     - noacl
     - nocto
-    - noatime
-    - nodiratime
+    # - noatime
+    # - nodiratime
   nfs:
     server: 192.168.0.11
     path: /export/media
