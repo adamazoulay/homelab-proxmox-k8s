@@ -83,23 +83,23 @@ kubectl label --overwrite ns gpu-operator pod-security.kubernetes.io/enforce=pri
 helm repo add nvidia https://helm.ngc.nvidia.com/nvidia \
     && helm repo update
     
-helm install --wait --generate-name \
-     -n gpu-operator --create-namespace \
-     nvidia/gpu-operator \
-     --set "toolkit.env[0].name=CONTAINERD_CONFIG" \
-      --set "toolkit.env[0].value=/var/lib/rancher/k3s/agent/etc/containerd/config.toml" \
-      --set "toolkit.env[1].name=CONTAINERD_SOCKET" \
-      --set "toolkit.env[1].value=/run/k3s/containerd/containerd.sock" \
-      --set "toolkit.env[2].name=CONTAINERD_RUNTIME_CLASS" \
-      --set "toolkit.env[2].value=nvidia" \
-      --set "toolkit.env[3].name=CONTAINERD_SET_AS_DEFAULT" \
-      --set "toolkit.env[3].value='true'"
-      
-      
-      
-     --set driver.enabled=false
+noglob helm install gpu-operator -n gpu-operator --create-namespace \
+  nvidia/gpu-operator \
+    --set toolkit.env[0].name=CONTAINERD_CONFIG \
+    --set toolkit.env[0].value=/var/lib/rancher/k3s/agent/etc/containerd/config.toml \
+    --set toolkit.env[1].name=CONTAINERD_SOCKET \
+    --set toolkit.env[1].value=/run/k3s/containerd/containerd.sock \
+    --set toolkit.env[2].name=CONTAINERD_RUNTIME_CLASS \
+    --set toolkit.env[2].value=nvidia \
+    --set toolkit.env[3].name=CONTAINERD_SET_AS_DEFAULT \
+    --set-string toolkit.env[3].value=true
+    
+    # --set driver.enabled=false
      
-helm uninstall gpu-operator-1714317432 -n gpu-operator
+helm delete -n nvidia-gpu-operator $(helm list -n nvidia-gpu-operator | grep nvidia-gpu-operator | awk '{print $1}')
+helm uninstall gpu-operator-1714404840 -n gpu-operator
+kubectl delete crd clusterpolicies.nvidia.com
+kubectl delete namespace gpu-operator
 ```
 
 ### Debug
