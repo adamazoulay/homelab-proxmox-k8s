@@ -5,8 +5,9 @@ metadata:
 spec:
   ports:
     - name: proxmox
-      port: 8006
+      port: 80
       protocol: TCP
+      targetPort: 8006
   clusterIP: None
   type: ClusterIP
 ---
@@ -47,4 +48,4 @@ spec:
               service:
                 name: proxmox-external
                 port:
-                  number: 8006
+                  number: 80
