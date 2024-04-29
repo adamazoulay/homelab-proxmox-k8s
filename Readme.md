@@ -102,8 +102,10 @@ kubectl delete crd clusterpolicies.nvidia.com
 kubectl delete namespace gpu-operator
 ```
 
+Test:
 ```shell
 kubectl exec -it service/plex -- bash
+nvidia-smi
 ```
 
 ### Debug
