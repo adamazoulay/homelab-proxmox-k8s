@@ -13,7 +13,7 @@ spec:
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: proxmox-external-ip
+  name: proxmox-external
 subsets:
   - addresses:
       - ip: 192.168.0.11
