@@ -39,9 +39,7 @@ spec:
         - name: NETCLIENT_NAME
           value: "k8s-gw"
         - name: NETCLIENT_ENDPOINT
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
+          value: "192.168.0.21"
         - name: TOKEN
           valueFrom:
             secretKeyRef:
