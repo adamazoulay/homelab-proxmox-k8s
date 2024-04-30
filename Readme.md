@@ -192,6 +192,7 @@ kubectl port-forward service/netmaker-ui 8080:80 -n netmaker
 ```
 
 ```shell
-kubectl get secret netmaker-client-token -n netmaker-client -o jsonpath="{.data.token}" | base64 -d
+kubectl cp wireguard-6fd57798db-l9pgv:/config/peer* /mnt/c/Users/Adam/Downloads 
+kubectl exec -it wireguard-6fd57798db-l9pgv /bin/bash
 ```
 
