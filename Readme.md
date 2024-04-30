@@ -27,6 +27,7 @@ Configure: `./scripts/configure`
    ```shell
    kubectl apply -f ./system/csi-smb/secret.yaml
    kubectl apply -f ./system/cert-manager/secret.yaml
+   kubectl apply -f ./apps/netmaker-client/secret.yaml
    ```
 7. (ON REMOTE) Ex:
    ```shell
@@ -189,5 +190,9 @@ kubectl port-forward service/hubble-ui 8080:80 -n kube-system
 kubectl port-forward service/hubble-peer 8080:443 -n kube-system 
 kubectl port-forward service/metrics-server 8080:443 -n kube-system 
 kubectl port-forward service/netmaker-ui 8080:80 -n netmaker
+```
+
+```shell
+kubectl get secret netmaker-client-token -n netmaker-client -o jsonpath="{.data.token}" | base64 -d
 ```
 

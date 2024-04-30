@@ -43,7 +43,10 @@ spec:
             fieldRef:
               fieldPath: status.hostIP
         - name: TOKEN
-          value: "TOKEN_VALUE"
+          valueFrom:
+            secretKeyRef:
+              name: netmaker-client-token
+              key: token
         volumeMounts:
         - mountPath: /etc/netclient
           name: etc-netclient
