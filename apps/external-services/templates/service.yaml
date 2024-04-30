@@ -1,0 +1,15 @@
+{{- range .Values.services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}-external
+spec:
+  ports:
+    - name: https
+      port: {{ .port }}
+      protocol: TCP
+      targetPort: {{ .port }}
+  clusterIP: None
+  type: ClusterIP
+{{- end }}

@@ -1,0 +1,27 @@
+{{- range .Values.services }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .name }}
+  annotations:
+    cert-manager.io/cluster-issuer: ssl-prod
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - {{ .name }}.galactica.host
+      secretName: {{ .name }}-tls-certificate
+  rules:
+    - host: {{ .name }}.galactica.host
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .name }}-external
+                port:
+                  number: {{ .port }}
+{{- end}}
