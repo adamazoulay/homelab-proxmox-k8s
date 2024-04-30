@@ -34,12 +34,11 @@ spec:
             secretKeyRef:
               name: netmaker-client-token
               key: token
+{{/*        command:*/}}
+{{/*          - touch /etc/netclient/*/}}
         volumeMounts:
         - mountPath: /etc/netclient
           name: etc-netclient
-        - mountPath: /var/log/netclient.log
-          name: logs-netclient
-          subPath: netclient.log
         - mountPath: /usr/bin/wg
           name: wg
         securityContext:
@@ -49,9 +48,6 @@ spec:
           path: /etc/netclient
           type: DirectoryOrCreate
         name: etc-netclient
-      - hostPath:
-          path: /etc/netclient/logs
-        name: logs-netclient
       - hostPath:
           path: /usr/bin/wg
           type: File
