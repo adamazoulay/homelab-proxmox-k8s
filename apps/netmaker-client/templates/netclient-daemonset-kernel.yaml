@@ -39,6 +39,7 @@ spec:
           name: etc-netclient
         - mountPath: /var/log/netclient.log
           name: logs-netclient
+          subPath: netclient.log
         - mountPath: /usr/bin/wg
           name: wg
         securityContext:
@@ -49,7 +50,7 @@ spec:
           type: DirectoryOrCreate
         name: etc-netclient
       - hostPath:
-          path: /etc/netclient/logs/netclient.log
+          path: /etc/netclient/logs
           type: DirectoryOrCreate
         name: logs-netclient
       - hostPath:
