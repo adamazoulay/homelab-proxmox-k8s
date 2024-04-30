@@ -37,7 +37,7 @@ spec:
         volumeMounts:
         - mountPath: /etc/netclient
           name: etc-netclient
-        - mountPath: /var/log
+        - mountPath: /var/log/netclient.log
           name: logs-netclient
           subPath: netclient.log
         - mountPath: /usr/bin/wg
@@ -49,10 +49,9 @@ spec:
           path: /etc/netclient
           type: DirectoryOrCreate
         name: etc-netclient
-      - hostPath:
-          path: /etc/netclient/logs
-          type: DirectoryOrCreate
-        name: logs-netclient
+      - name: logs-netclient
+        emptyDir:
+          sizeLimit: 500Mi
       - hostPath:
           path: /usr/bin/wg
           type: File
