@@ -49,9 +49,10 @@ spec:
           path: /etc/netclient
           type: DirectoryOrCreate
         name: etc-netclient
-      - name: logs-netclient
-        emptyDir:
-          sizeLimit: 500Mi
+      - hostPath:
+          path: /etc/netclient/netclient.log
+          type: FileOrCreate
+        name: logs-netclient
       - hostPath:
           path: /usr/bin/wg
           type: File
