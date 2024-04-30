@@ -187,5 +187,6 @@ kubectl port-forward service/plex 32400:32400 -n plex
 ```shell
 kubectl port-forward service/hubble-ui 8080:80 -n kube-system 
 kubectl port-forward service/hubble-peer 8080:443 -n kube-system 
+kubectl port-forward service/metrics-server 8080:443 -n kube-system 
 ```
 
