@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: omv
+  annotations:
+    cert-manager.io/cluster-issuer: ssl-prod
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "omv.galactica.host"
+      secretName: "omv-tls-certificate"
+  rules:
+    - host: "omv.galactica.host"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: omv-external
+                port:
+                  number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: omv-external
+spec:
+  ports:
+    - name: https
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  clusterIP: None
+  type: ClusterIP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: omv-external-ip
+  labels:
+    kubernetes.io/service-name: omv-external
+addressType: IPv4
+ports:
+  - name: ''
+    appProtocol: http
+    protocol: TCP
+    port: 80
+endpoints:
+  - addresses:
+      - "192.168.0.11"
