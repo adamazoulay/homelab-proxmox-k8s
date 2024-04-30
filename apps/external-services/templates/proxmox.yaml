@@ -4,6 +4,7 @@ metadata:
   name: proxmox
   annotations:
     cert-manager.io/cluster-issuer: ssl-prod
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   tls:
