@@ -92,7 +92,7 @@ spec:
         - name: transcode
           emptyDir:
             medium: Memory
-            sizeLimit: 5Gi
+            sizeLimit: 10Gi
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
