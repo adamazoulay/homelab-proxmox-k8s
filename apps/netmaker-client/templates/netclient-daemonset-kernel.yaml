@@ -51,7 +51,6 @@ spec:
         name: etc-netclient
       - hostPath:
           path: /etc/netclient/logs
-          type: DirectoryOrCreate
         name: logs-netclient
       - hostPath:
           path: /usr/bin/wg
