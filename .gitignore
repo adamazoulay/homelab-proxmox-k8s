@@ -21,3 +21,4 @@ Chart.lock
 /tmp.yaml
 /system/cert-manager/secret.yaml
 /apps/media-stack/charts/
+/apps/netmaker-client/secret.yaml
