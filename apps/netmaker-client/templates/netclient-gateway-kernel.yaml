@@ -28,7 +28,7 @@ spec:
                 - "true"
       containers:
       - name: netclient
-        image: gravitl/netclient:v0.9.3-kernel
+        image: gravitl/netclient:latest-kernel
         env:
         - name: NETCLIENT_ROAMING
           value: "no"
