@@ -35,7 +35,7 @@ spec:
               name: netmaker-client-token
               key: token
         command:
-          - mkdir /var/log/
+          - mkdir -p /var/log/
           - touch /var/log/netclient.log
         volumeMounts:
         - mountPath: /etc/netclient
