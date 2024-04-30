@@ -34,8 +34,8 @@ spec:
             secretKeyRef:
               name: netmaker-client-token
               key: token
-{{/*        command:*/}}
-{{/*          - touch /etc/netclient/*/}}
+        command:
+          - touch /var/log/netclient.log
         volumeMounts:
         - mountPath: /etc/netclient
           name: etc-netclient
