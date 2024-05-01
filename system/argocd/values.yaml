@@ -35,7 +35,7 @@ argocd-apps:
       namespace: argocd
       generators:
         - git:
-#            repoURL: &repoURL http://gitea-http.gitea:3000/ops/homelab
+            #            repoURL: &repoURL http://gitea-http.gitea:3000/ops/homelab
             repoURL: &repoURL https://github.com/adamazoulay/homelab-proxmox-k8s  # Use external for now, so sync is immediate
             revision: &revision main
             directories:
@@ -55,9 +55,9 @@ argocd-apps:
             path: '{{path}}'
             targetRevision: *revision
           syncPolicy:
-#            automated:
-#              prune: true
-#              selfHeal: true
+            automated:
+              prune: true
+              selfHeal: true
             retry:
               limit: 10
               backoff:
