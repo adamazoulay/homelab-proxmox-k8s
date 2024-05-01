@@ -28,6 +28,7 @@ app-template:
       className: nginx
       annotations:
         cert-manager.io/cluster-issuer: ssl-prod
+        nginx.ingress.kubernetes.io/proxy-body-size: "4096m"
       hosts:
         - host: &host paperless.galactica.host
           paths:

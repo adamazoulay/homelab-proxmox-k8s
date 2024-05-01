@@ -65,6 +65,11 @@ Configure: `./scripts/configure`
    ./scripts/kanidm-reset-password idm_admin
    ```
 
+2. Get passwords:
+   ```shell
+   kubectl get secret paperless.admin -n global-secrets -o jsonpath="{.data.PAPERLESS_ADMIN_PASSWORD}" | base64 -d
+   ```
+
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
