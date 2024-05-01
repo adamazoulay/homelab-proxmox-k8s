@@ -58,6 +58,7 @@ app-template:
           - search:
               provider: google
               target: _blank
+        # TODO: inject secrets for services display
         services.yaml: |
           - Popular:
             - Matrix:
