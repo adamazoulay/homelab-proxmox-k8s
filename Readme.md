@@ -27,6 +27,7 @@ Configure: `./scripts/configure`
    ```shell
    kubectl apply -f ./system/csi-smb/secret.yaml
    kubectl apply -f ./system/cert-manager/secret.yaml
+   kubectl apply -f ./apps/media-stack/secret.yaml
    ```
 7. (ON REMOTE) Ex:
    ```shell

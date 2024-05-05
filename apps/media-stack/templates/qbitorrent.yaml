@@ -1,0 +1,123 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbitorrent
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: qbitorrent
+  selector:
+    app.kubernetes.io/component: qbitorrent
+    app.kubernetes.io/instance: qbitorrent
+    app.kubernetes.io/name: qbitorrent
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbitorrent
+  labels:
+    app.kubernetes.io/component: qbitorrent
+    app.kubernetes.io/instance: qbitorrent
+    app.kubernetes.io/name: qbitorrent
+spec:
+  revisionHistoryLimit: 1
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: qbitorrent
+      app.kubernetes.io/name: qbitorrent
+      app.kubernetes.io/instance: qbitorrent
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: qbitorrent
+        app.kubernetes.io/instance: qbitorrent
+        app.kubernetes.io/name: qbitorrent
+    spec:
+      enableServiceLinks: true
+      serviceAccountName: default
+      automountServiceAccountToken: true
+      securityContext:
+        fsGroup: 1000
+      hostIPC: false
+      hostNetwork: false
+      hostPID: false
+      dnsPolicy: ClusterFirst
+      containers:
+        - image: linuxserver/qbitorrent:latest
+          name: qbitorrent
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "100"
+          volumeMounts:
+            - mountPath: /config
+              name: data
+              subPath: qbitorrent/config
+            - mountPath: /data
+              name: tank-data
+        - image: qmcgaw/gluetun:latest
+          name: gluetun
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: "privado"
+            - name: OPENVPN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-creds
+                  key: OPENVPN_USER
+            - name: OPENVPN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: vpn-creds
+                  key: OPENVPN_PASSWORD
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            - mountPath: /config
+              name: data
+              subPath: gluetun/config
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: pvc-media-stack-data-local
+        - name: tank-data
+          persistentVolumeClaim:
+            claimName: pvc-tank-data
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbitorrent
+  labels:
+    app.kubernetes.io/instance: qbitorrent
+    app.kubernetes.io/name: qbitorrent
+  annotations:
+    cert-manager.io/cluster-issuer: ssl-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "4096m"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "qbitorrent.galactica.host"
+      secretName: "qbitorrent-tls-certificate"
+  rules:
+    - host: "qbitorrent.galactica.host"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: qbitorrent
+                port:
+                  number: 8080
