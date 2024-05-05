@@ -195,6 +195,8 @@ kubectl port-forward service/hubble-ui 8080:80 -n kube-system
 kubectl port-forward service/hubble-peer 8080:443 -n kube-system 
 kubectl port-forward service/metrics-server 8080:443 -n kube-system 
 kubectl port-forward service/netmaker-ui 8080:80 -n netmaker
+kubectl port-forward pod/qbitorrent-86b7d7cc86-7zq54 8080:8080 -n media-stack
+kubectl exec -it pod/qbitorrent-86b7d7cc86-zxhc2 /bin/bash
 ```
 
 ```shell
