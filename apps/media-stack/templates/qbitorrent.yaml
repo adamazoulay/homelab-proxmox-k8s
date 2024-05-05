@@ -50,7 +50,7 @@ spec:
       hostPID: false
       dnsPolicy: ClusterFirst
       containers:
-        - image: linuxserver/qbitorrent:latest
+        - image: lscr.io/linuxserver/qbittorrent:latest
           name: qbitorrent
           env:
             - name: PUID
