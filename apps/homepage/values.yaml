@@ -69,10 +69,14 @@ app-template:
                 href: https://plex.galactica.host
                 description: Media system (movies, music, etc.)
                 icon: plex.svg
+                namespace: media-stack
+                app: plex
             - Overseer:
                 href: https://requests.galactica.host
                 description: Request media
-                icon: jellyseerr.svg
+                icon: overseer.svg
+                namespace: media-stack
+                app: overseerr
             - Paperless:
                 href: https://paperless.galactica.host
                 description: Document management system
@@ -86,14 +90,20 @@ app-template:
                 href: https://prowlarr.galactica.host
                 description: Indexer manager
                 icon: prowlarr.svg
+                namespace: media-stack
+                app: prowlarr
             - Radarr:
                 href: https://radarr.galactica.host
                 description: Movie manager
                 icon: radarr.svg
+                namespace: media-stack
+                app: radarr
             - Sonarr:
                 href: https://sonarr.galactica.host
                 description: TV show manager
                 icon: sonarr.svg
+                namespace: media-stack
+                app: sonarr
             - Kanidm:
                 href: https://auth.galactica.host
                 description: Identity management
