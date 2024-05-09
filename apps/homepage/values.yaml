@@ -71,6 +71,10 @@ app-template:
                 icon: plex.svg
                 namespace: media-stack
                 app: plex
+                widget:
+                  type: plex
+                  url: plex.media-stack.svc.cluster.local:32400
+                  key: mytokenhere # see https://www.plexopedia.com/plex-media-server/general/plex-token/
             - Overseer:
                 href: https://requests.galactica.host
                 description: Request media
