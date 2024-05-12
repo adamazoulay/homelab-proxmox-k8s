@@ -80,8 +80,6 @@ spec:
               subPath: plex/config
             - mountPath: /data/media
               name: media
-            - mountPath: /transcode
-              name: transcode
       volumes:
         - name: data
           persistentVolumeClaim:
@@ -89,10 +87,6 @@ spec:
         - name: media
           persistentVolumeClaim:
             claimName: pvc-media
-        - name: transcode
-          emptyDir:
-            medium: Memory
-            sizeLimit: 10Gi
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

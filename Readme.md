@@ -133,6 +133,7 @@ KUBECONFIG=~/.kube/homelab kubeshark clean
 ```
 
 ```shell
+kubectl get secret registry-admin-secret -n zot -o jsonpath="{.data.password}" | base64 -d
 kubectl get secret dex.grafana -n global-secrets -o jsonpath="{.data.client_secret}" | base64 -d
 ```
 
