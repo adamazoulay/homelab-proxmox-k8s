@@ -52,7 +52,7 @@ data:
         header: true
         style: row
         columns: 4
-      Tor Stack:
+      Media Stack:
         header: true
         style: row
         columns: 4
@@ -134,25 +134,25 @@ data:
               timezone: America/Toronto
               integrations:
                 - type: sonarr
-                  service_group: Tor Stack
+                  service_group: Media Stack
                   service_name: Sonarr
                   color: teal
                   params:
                     unmonitored: true
                 - type: radarr
-                  service_group: Tor Stack
+                  service_group: Media Stack
                   service_name: Radarr
                   color: yellow
                   params:
                     unmonitored: true
                 - type: lidarr
-                  service_group: Tor Stack
+                  service_group: Media Stack
                   service_name: Lidarr
                   color: green
                   params:
                     unmonitored: true
                 - type: readarr
-                  service_group: Tor Stack
+                  service_group: Media Stack
                   service_name: Readarr
                   color: red
                   params:
@@ -415,11 +415,11 @@ data:
             description: Network Boot
   widgets.yaml: |
     - openmeteo:
-        label: Your City
-        lattitude: 00.123
-        longitude: 00.123
-        timezone: TZ # America/Chicago, UTC, etc.
-        units: imperial
+        label: Toronto
+        lattitude: 43.6532
+        longitude: -79.3832
+        timezone: America/Toronto
+        units: metric
         cache: 5
     - kubernetes:
         cluster:
@@ -434,7 +434,7 @@ data:
           memory: true
           showLabel: true
     - search:
-        provider: duckduckgo
+        provider: google
         target: _blank
         focus: true
         showSearchSuggestions: true
