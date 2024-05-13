@@ -23,4 +23,5 @@ Chart.lock
 /apps/media-stack/charts/
 /apps/netmaker-client/secret.yaml
 /apps/media-stack/secret.yaml
-/apps/homepage/templates/secret.yaml
+/apps/homepage/secret.yaml
+/apps/homepage/secret.yaml
