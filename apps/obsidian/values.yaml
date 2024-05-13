@@ -1,6 +1,6 @@
 couchdb:
   clusterSize: 1
-  createAdminSecret: false
+  createAdminSecret: true
   persistentVolume:
     enabled: true 
     accessModes:
