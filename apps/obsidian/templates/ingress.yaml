@@ -20,6 +20,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: obsidian
+                name: obsidian-couchdb
                 port:
-                  number: 10292
+                  number: 5984
