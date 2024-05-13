@@ -300,11 +300,6 @@ data:
               type: immich
               url: http://192.168.0.115:8760
               key: "{{HOMEPAGE_VAR_IMMICH_API_TOKEN}}"
-    - Apps:
-        - Obsidian:
-            icon: obsidian.svg
-            href: "{{HOMEPAGE_VAR_OBSIDIAN_URL}}"
-            description: Markdown Document Editor
     - Monitoring:
         - Uptime Kuma:
             icon: uptime-kuma.svg
