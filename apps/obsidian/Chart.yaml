@@ -1,0 +1,7 @@
+apiVersion: v2
+name: obsidian
+version: 0.0.0
+dependencies:
+  - name: obsidian
+    version: 7.0.5
+    repository: https://charts.truecharts.org

@@ -1,3 +1,3 @@
 ```shell
-kubectl apply -f apps/homepage/templates/secret.yaml -n homepage
+kubectl apply -f apps/homepage/secret.yaml -n homepage
 ```
