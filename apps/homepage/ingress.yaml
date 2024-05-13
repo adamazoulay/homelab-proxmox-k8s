@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: &host homepage.galactica.host
+    - host: &host home.galactica.host
       http:
         paths:
           - path: /
