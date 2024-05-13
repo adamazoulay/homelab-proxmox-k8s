@@ -70,7 +70,7 @@ data:
               description: Video Monopoly
         - YouTubeDL:
             - icon: youtubedl.svg
-              href: {{HOMEPAGE_VAR_YTDL_URL}}
+              href: "{{HOMEPAGE_VAR_YTDL_URL}}"
               description: Downloader
         - Proton Mail:
             - icon: proton-mail.svg
@@ -100,12 +100,8 @@ data:
               description: Homepage Documentation
         - Nextcloud:
             - icon: nextcloud.svg
-              href: {{HOMEPAGE_VAR_NEXTCLOUD_URL}}
+              href: "{{HOMEPAGE_VAR_NEXTCLOUD_URL}}"
               description: Cloud and Collaboration Storage
-        - Patreon:
-            - abbr: P
-              href: https://www.patreon.com/epochphilosophy
-              description: Funding
         - ChatGPT:
             - icon: chatgpt.svg
               href: https://chat.openai.com/
