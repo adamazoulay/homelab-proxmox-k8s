@@ -50,8 +50,8 @@ spec:
       hostPID: false
       dnsPolicy: ClusterFirst
       containers:
-        - image: ghcr.io/wizarrrr/wizarr:latest
-          name: wizarr
+        - name: wizarr
+          image: ghcr.io/wizarrrr/wizarr:latest
           env:
             - name: TZ
               value: America/Toronto
