@@ -55,6 +55,10 @@ spec:
           env:
             - name: TZ
               value: America/Toronto
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "100"
           volumeMounts:
             - mountPath: /data/database
               name: data
@@ -63,7 +67,6 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: pvc-media-stack-data-local
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
