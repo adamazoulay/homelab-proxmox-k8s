@@ -50,13 +50,9 @@ spec:
       hostPID: false
       dnsPolicy: ClusterFirst
       containers:
-        - image: ghcr.io/wizarrrr/wizarr:beta
+        - image: ghcr.io/wizarrrr/wizarr:latest
           name: wizarr
           env:
-            - name: APP_URL
-              value: https://wizarr.galactica.host
-            - name: DISABLE_BUILTIN_AUTH
-              value: "false" #Set to true ONLY if you are using another auth provider (Authelia, Authentik, etc)
             - name: TZ
               value: America/Toronto
           volumeMounts:
