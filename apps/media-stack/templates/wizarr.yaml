@@ -10,11 +10,19 @@ spec:
       targetPort: 5690
       protocol: TCP
       name: wizarr
+  selector:
+    app.kubernetes.io/component: wizarr
+    app.kubernetes.io/instance: wizarr
+    app.kubernetes.io/name: wizarr
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wizarr
+  labels:
+    app.kubernetes.io/component: wizarr
+    app.kubernetes.io/instance: wizarr
+    app.kubernetes.io/name: wizarr
 spec:
   revisionHistoryLimit: 1
   replicas: 1
@@ -22,8 +30,15 @@ spec:
     type: Recreate
   selector:
     matchLabels:
+      app.kubernetes.io/component: wizarr
       app.kubernetes.io/name: wizarr
+      app.kubernetes.io/instance: wizarr
   template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: wizarr
+        app.kubernetes.io/instance: wizarr
+        app.kubernetes.io/name: wizarr
     spec:
       enableServiceLinks: true
       serviceAccountName: default
@@ -48,11 +63,15 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: pvc-media-stack-data-local
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wizarr
+  labels:
+    app.kubernetes.io/instance: wizarr
+    app.kubernetes.io/name: wizarr
   annotations:
     cert-manager.io/cluster-issuer: ssl-prod
     external-dns.alpha.kubernetes.io/target: "homelab-tunnel.galactica.host"
