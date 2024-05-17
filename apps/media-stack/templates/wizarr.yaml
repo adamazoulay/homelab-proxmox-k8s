@@ -40,7 +40,6 @@ spec:
         app.kubernetes.io/instance: wizarr
         app.kubernetes.io/name: wizarr
     spec:
-      runtimeClassName: nvidia
       enableServiceLinks: true
       serviceAccountName: default
       automountServiceAccountToken: true
@@ -61,9 +60,9 @@ spec:
             - name: TZ
               value: America/Toronto
           volumeMounts:
-            - mountPath: /config
+            - mountPath: /data/database
               name: data
-              subPath: wizarr/config
+              subPath: wizarr/database
       volumes:
         - name: data
           persistentVolumeClaim:
