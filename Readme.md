@@ -42,6 +42,10 @@ Configure: `./scripts/configure`
    kubectl ctx homelab
    kubectl get all
    ```
+   
+```shell
+export KUBECONFIG=~/.kube/homelab
+```
 
 ### Post-install
 

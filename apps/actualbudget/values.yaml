@@ -1,4 +1,4 @@
-app-template:
+actualbudget:
   controllers:
     main:
       containers:
