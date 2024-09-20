@@ -209,3 +209,7 @@ kubectl cp wireguard-6fd57798db-l9pgv:/config/peer* /mnt/c/Users/Adam/Downloads
 kubectl exec -it wireguard-6fd57798db-l9pgv /bin/bash
 ```
 
+### Cleaning
+
+Clean up images as per [this thread](https://github.com/k3s-io/k3s/issues/1900):
+`sudo k3s crictl rmi --prune`
