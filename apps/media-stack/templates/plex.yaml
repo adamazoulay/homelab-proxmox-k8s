@@ -55,25 +55,25 @@ spec:
           name: plex
           securityContext:
             privileged: true
-#          resources:
-#            requests:
-#              nvidia.com/gpu: "1"
-#              # TODO: Sort out request amounts
-#              # cpu: 1000m
-#              # memory: 7.5Gi
-#            limits:
-#              nvidia.com/gpu: "1"
+          #resources:
+          #  requests:
+          #    nvidia.com/gpu: "1"
+          #    # TODO: Sort out request amounts
+          #    # cpu: 1000m
+          #    # memory: 7.5Gi
+          #  limits:
+          #    nvidia.com/gpu: "1"
           env:
             - name: PUID
               value: "1000"
             - name: PGID
               value: "100"
-#            - name: NVIDIA_VISIBLE_DEVICES
-#              value: all
-#            - name: NVIDIA_DRIVER_CAPABILITIES
-#              value: compute,video,utility
-#            - name: CUDA_DRIVER_CAPABILITIES
-#              value: compute,video,utility
+            #- name: NVIDIA_VISIBLE_DEVICES
+            #  value: all
+            #- name: NVIDIA_DRIVER_CAPABILITIES
+            #  value: compute,video,utility
+            #- name: CUDA_DRIVER_CAPABILITIES
+            #  value: compute,video,utility
           volumeMounts:
             - mountPath: /config
               name: data
