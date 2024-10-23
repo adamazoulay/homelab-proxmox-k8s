@@ -68,12 +68,12 @@ spec:
               value: "1000"
             - name: PGID
               value: "100"
-            #- name: NVIDIA_VISIBLE_DEVICES
-            #  value: all
-            #- name: NVIDIA_DRIVER_CAPABILITIES
-            #  value: compute,video,utility
-            #- name: CUDA_DRIVER_CAPABILITIES
-            #  value: compute,video,utility
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: all
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: compute,video,utility
+            - name: CUDA_DRIVER_CAPABILITIES
+              value: compute,video,utility
           volumeMounts:
             - mountPath: /config
               name: data
