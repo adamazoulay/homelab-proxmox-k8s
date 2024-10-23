@@ -55,14 +55,14 @@ spec:
           name: plex
           securityContext:
             privileged: true
-          #resources:
-          #  requests:
-          #    nvidia.com/gpu: "1"
-          #    # TODO: Sort out request amounts
-          #    # cpu: 1000m
-          #    # memory: 7.5Gi
-          #  limits:
-          #    nvidia.com/gpu: "1"
+          resources:
+            requests:
+              nvidia.com/gpu: "0"
+              # TODO: Sort out request amounts
+              # cpu: 1000m
+              # memory: 7.5Gi
+            limits:
+              nvidia.com/gpu: "0"
           env:
             - name: PUID
               value: "1000"
