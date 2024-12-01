@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: actualbudget
+  labels:
+    app.kubernetes.io/instance: actualbudget
+    app.kubernetes.io/name: actualbudget
+  annotations:
+    cert-manager.io/cluster-issuer: ssl-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - budget.galactica.host
+      secretName: budget-tls-certificate
+  rules:
+    - host: budget.galactica.host
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: actualbudget
+                port:
+                  number: 5006
