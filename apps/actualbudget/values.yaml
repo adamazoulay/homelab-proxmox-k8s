@@ -1,4 +1,4 @@
-actualserver:
+actual:
   # Default values for actualserver
   global:
     # -- Labels to apply to all resources.
