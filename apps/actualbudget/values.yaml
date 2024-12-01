@@ -193,7 +193,7 @@ actualbudget:
 
   ingress:
     # -- Enable ingress resource
-    enabled: false
+    enabled: true
     # -- IngressClass that will be used to implement the Ingress
     ingressClassName: nginx
     # -- Additional annotations for the Ingress resource. To enable certificate autogeneration, place here your cert-manager annotations.
