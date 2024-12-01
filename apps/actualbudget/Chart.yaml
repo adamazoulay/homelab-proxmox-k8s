@@ -1,7 +1,7 @@
 apiVersion: v2
-name: actualbudget
+name: actualserver
 version: 0.0.0
 dependencies:
-  - name: actual
+  - name: actualserver
     version: 2.0.0
     repository: https://beluga-cloud.github.io/charts
