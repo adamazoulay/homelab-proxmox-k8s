@@ -61,11 +61,11 @@ actualbudget:
       # -- actualserver image repository
       repository: ghcr.io/actualbudget/actual-server
       # -- actualserver image tag (immutable tags are recommended)
-      tag: latest
+      tag: 24.11.0
       # -- actualserver image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag
       digest: ""
       # -- actualserver image pull policy
-      pullPolicy: IfNotPresent
+      pullPolicy: Always
 
   # -- Additional annotations to apply to the pod.
   podAnnotations: { }
